@@ -6,11 +6,28 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/09 01:17:55 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:57:07 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_all(t_node *origin)
+{
+	t_node	*current;
+	t_node	*volgende;
+
+	if (!origin)
+		return ;
+	current = origin->next;
+	free(origin);
+	while (current != NULL && current != origin)
+	{
+		volgende = current->next;
+		free(current);
+		current = volgende;
+	}
+}
 
 t_node	*new_node(int nbr, t_node *vorige, t_node *volgende)
 {
@@ -39,7 +56,10 @@ void	create_linked_list(int count, char **list, t_node *origin)
 		nbr = (int) my_atoi(list[i]);
 		current = new_node(nbr, temp_prev, NULL);
 		if (!current)
-			return ; //ici faudra tout free au besoin !
+		{
+			free_all(origin);
+			return ;
+		}
 		temp_prev->next = current;
 		temp_prev = current;
 		i++;
