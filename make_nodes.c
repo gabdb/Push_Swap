@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/09 14:57:07 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/11 23:31:16 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_node	*new_node(int nbr, t_node *vorige, t_node *volgende)
 	return (result);
 }
 
-void	create_linked_list(int count, char **list, t_node *origin)
+void	create_stack_a(int count, char **list, t_node *origin)
 {
 	t_node	*current;
 	t_node	*temp_prev;

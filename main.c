@@ -6,59 +6,36 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/09 01:26:15 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/12 15:22:42 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	valid_input(int count, char **list)
+/*
+int main(int ac, char **av)
 {
-	int		i;
-	int		j;
-	long	test;
+	char	**list;
+	int		count;
 
-	if (count <= 1)
-		return (0);
-	i = 0;
-	while (++i < count)
+	count = ac;
+	list = av;
+	if (ac == 2)
 	{
-		j = -1;
-		while (list[i][++j] != '\0')
-		{
-			if (list[i][j] == '-' && 0 == j)
-				j++;
-			if (list[i][j] == '\0')
-				return (0);
-			if (list[i][j] < '0' || list[i][j] > '9')
-				return (0);
-		}
-		test = my_atoi(list[i]);
-		if (test < -2147483648 || test > 2147483647)
-			return (0);
+		list = all_in_one(av);
+		count = words_in_split(list);
 	}
-	return (1);
-}
 
-int check_doubles(int count, char **list)
-{
-	int	i;
-	int	j;
+	if (valid_input(count, list) == 0)
+		return (printf("Error: invalid input !\n"));
+	else if (check_doubles(count, list) == 0)
+		return (printf("Error: doublons !\n"), 0);
+	else
+		printf("valid input for push_swap !\n");
 
-	i = 1;
-	while (i + 1 < count)
-	{
-		j = i + 1;
-		while (j < count)
-		{
-			if (my_strcmp(list[i], list[j]) == 0)
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
+	return 0;
 }
+*/
 
 /*
 int main(int ac, char **av)
@@ -76,7 +53,7 @@ int main(int ac, char **av)
 
 	nbr = (int) my_atoi(av[1]);
 	origin = new_node(nbr, NULL, NULL);
-	create_linked_list(ac, av, origin);
+	create_stack_a(ac, av, origin);
 	current = origin;
 	for (int i = 1; i < ac; i++)
 	{

@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:53 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/09 00:05:15 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/11 23:37:43 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ long	my_atoi(char *str)
 {
 	long	sign;
 	long	res;
-	long	buff;
 
 	sign = 1;
 	res = 0;
-	buff = 0;
 	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '-')
@@ -47,3 +45,20 @@ int	my_strcmp(char *s1, char *s2)
 		i++;
 	return (s1[i] - s2[i]);
 }
+
+int	find_min(t_node *origin)
+{
+	int		result;
+	t_node	*ptr;
+
+	result = origin->value;
+	ptr = origin->next;
+	while (ptr != NULL && ptr != origin)
+	{
+		if (ptr->value > result)
+			result = ptr->value;
+		ptr = ptr->next;
+	}
+	return (result);
+}
+
