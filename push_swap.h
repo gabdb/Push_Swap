@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/12 15:25:04 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/13 00:22:12 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ int		words_in_split(char **list);
 void	free_all(t_node *origin);
 t_node	*new_node(int nbr, t_node *vorige, t_node *volgende);
 void	create_stack_a(int count, char **list, t_node *origin);
+
+// OPERATIONS
+void	ft_swap(t_node *origin);
+void	ft_double_swap(t_node *head_a, t_node *head_b);
+void	ft_push(t_node *src, t_node *dest);
 
 // UTILS PROTOTYPES
 long	my_atoi(char *str);
