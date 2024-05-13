@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/13 18:41:20 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/13 23:44:40 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ int		check_doubles(int count, char **list);
 int		words_in_split(char **list);
 
 // NODES PROTOYPES
-void	free_all(t_node *origin);
+void	free_all(t_head *origin);
 t_node	*new_node(int nbr, t_node *vorige, t_node *volgende);
-void	create_stack_a(int count, char **list, t_node *origin);
+void	create_stack_a(int count, char **list, t_head *origin);
+t_head	*init_head(void);
 
 // OPERATIONS
 void	ft_swap(t_node *origin);

@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/13 18:28:03 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/13 23:48:08 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ int main(int ac, char **av)
 		printf("valid input for push_swap !\n\n");
 
 	t_node	*current;
-	t_node	*origin;
-	int		nbr;
+	t_head	*origin;
 
-	nbr = (int) my_atoi(av[1]);
-	origin = new_node(nbr, NULL, NULL);
+	origin = init_head();
 	create_stack_a(ac, av, origin);
-	current = origin;
+	current = origin->first;
+	printf("t_head, donc structure mère: %p\n", origin);
+	printf("address 'first': %p\n", origin->first);
+	printf("address 'last': %p\n\n", origin->last);
 	for (int i = 1; i < ac; i++)
 	{
 		printf("%d'th node : %p\n", i, current);

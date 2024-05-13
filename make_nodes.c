@@ -6,27 +6,22 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/11 23:31:16 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/13 23:46:00 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_all(t_node *origin)
+t_head	*init_head(void)
 {
-	t_node	*current;
-	t_node	*volgende;
+	t_head	*result;
 
-	if (!origin)
-		return ;
-	current = origin->next;
-	free(origin);
-	while (current != NULL && current != origin)
-	{
-		volgende = current->next;
-		free(current);
-		current = volgende;
-	}
+	result = (t_head *)malloc(sizeof(t_head));
+	if (!result)
+		return (NULL);
+	result->first = NULL;
+	result->last = NULL;
+	return (result);
 }
 
 t_node	*new_node(int nbr, t_node *vorige, t_node *volgende)
@@ -42,16 +37,16 @@ t_node	*new_node(int nbr, t_node *vorige, t_node *volgende)
 	return (result);
 }
 
-void	create_stack_a(int count, char **list, t_node *origin)
+void	create_stack_a(int count, char **list, t_head *origin)
 {
 	t_node	*current;
 	t_node	*temp_prev;
 	int		nbr;
 	int		i;
 
-	temp_prev = origin;
-	i = 2;
-	while (i < count)
+	temp_prev = NULL;
+	i = 0;
+	while (++i < count)
 	{
 		nbr = (int) my_atoi(list[i]);
 		current = new_node(nbr, temp_prev, NULL);
@@ -60,10 +55,30 @@ void	create_stack_a(int count, char **list, t_node *origin)
 			free_all(origin);
 			return ;
 		}
-		temp_prev->next = current;
+		if (i == 1)
+			origin->first = current;
+		else
+			temp_prev->next = current;
 		temp_prev = current;
-		i++;
 	}
-	current->next = origin;
-	origin->previous = current;
+	current->next = origin->first;
+	origin->first->previous = current;
+	origin->last = current;
+}
+
+void	free_all(t_head *origin)
+{
+	t_node	*current;
+	t_node	*volgende;
+
+	if (!origin)
+		return ;
+	current = origin->first;
+	while (current != NULL && current != origin->first)
+	{
+		volgende = current->next;
+		free(current);
+		current = volgende;
+	}
+	free(origin);
 }
