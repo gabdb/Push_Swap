@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/12 18:56:44 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:28:03 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int main(int ac, char **av)
 	count = ac;
 	list = av;
 	if (ac == 2)
-	{
 		list = all_in_one(av);
-		count = words_in_split(list);
-	}
+	if (!list)
+		return (printf("Error: invalid input !\n"), 0);
+	count = words_in_split(list);
 
 	if (valid_input(count, list) == 0)
-		return (printf("Error: invalid input !\n"));
+		return (printf("Error: invalid input !\n"), 0);
 	else if (check_doubles(count, list) == 0)
 		return (printf("Error: doublons !\n"), 0);
 	else

@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:54:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/13 00:24:14 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:48:47 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ void	ft_double_swap(t_node *head_a, t_node *head_b)
 	write(1, "double swap !", 13);
 }
 
-void	ft_push(t_node *src, t_node *dest) //probleme avec 'origin', envisager **dptr
+//probleme avec 'origin', envisager **dptr
+void	ft_push(t_node *src, t_node *dest)
 {
-	
 	t_node	*temp;
-	int		int_temp;
 
 	if (!dest)
 		return ;

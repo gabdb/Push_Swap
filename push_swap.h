@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/13 00:22:12 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:41:20 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ typedef struct s_node
 	struct s_node	*previous;
 	struct s_node	*next;	
 }			t_node;
+
+typedef struct s_head
+{
+	t_node	*first;
+	t_node	*last;
+}			t_head;
+
+
 
 // VALIDITY PROTOTYPES
 char	**all_in_one(char **list);

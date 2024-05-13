@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:53 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/11 23:37:43 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:42:25 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,3 @@ int	my_strcmp(char *s1, char *s2)
 		i++;
 	return (s1[i] - s2[i]);
 }
-
-int	find_min(t_node *origin)
-{
-	int		result;
-	t_node	*ptr;
-
-	result = origin->value;
-	ptr = origin->next;
-	while (ptr != NULL && ptr != origin)
-	{
-		if (ptr->value > result)
-			result = ptr->value;
-		ptr = ptr->next;
-	}
-	return (result);
-}
-

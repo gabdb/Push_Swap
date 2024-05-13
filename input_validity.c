@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:34:28 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/12 15:18:42 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:20:35 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 char	**all_in_one(char **list)
 {
 	char	**new_list;
-	int		found_space;
 	int		i;
 
-	found_space = 0;
 	i = 0;
 	while (list[1][i] != '\0')
 	{
-		if (list[1][i] == ' ')
-			found_space = 1;
-		if (list[1][i] == ' ')
+		if (list[1][i] == ' ' || (list[1][i] >= '0' && list[1][i] <= '9'))
 			i++;
-		else if (list[1][i] >= '0' && list[1][i] <= '9')
-			i++;
+		else if (list[1][i] == '-')
+		{
+			if (!list[1][i + 1])
+				return (NULL);
+			else if (list[1][i + 1] >= '0' && list[1][i + 1] <= '9')
+				i++;
+			else
+				return (NULL);
+		}
 		else
 			return (NULL);
 	}
-	if (found_space)
-		new_list = ft_split(list[1], ' ');
-	else
-		new_list = list;
+	new_list = ft_split(list[1], ' ');
 	if (!new_list)
 		return (NULL);
 	return (new_list);
