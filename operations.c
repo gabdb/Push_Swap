@@ -6,22 +6,23 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:54:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/13 18:48:47 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:41:43 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap(t_node *origin)
+void	ft_swap(t_head *origin)
 {
-	int	temp;
+	int		temp;
+	t_node	*current;
 
-	if (!origin || !origin->next)
+	if (!origin || !origin->first || !origin->first->next)
 		return ;
-	temp = origin->value;
-	origin->value = (origin->next)->value;
-	(origin->next)->value = temp;
-	write(1, "swap occured !", 14);
+	current = origin->first;
+	temp = current->value;
+	current->value = current->next->value;
+	current->next->value = temp;
 }
 
 void	ft_double_swap(t_node *head_a, t_node *head_b)
@@ -31,22 +32,18 @@ void	ft_double_swap(t_node *head_a, t_node *head_b)
 	write(1, "double swap !", 13);
 }
 
-//probleme avec 'origin', envisager **dptr
-void	ft_push(t_node *src, t_node *dest)
+void	ft_push(t_head *src, t_head *dest)
 {
 	t_node	*temp;
 
-	if (!dest)
+	if (!src || !src->first || !dest)
 		return ;
-	temp =  src->next; //sauver address 2e noeud de stack 'b'
-	src->previous->next = temp; //faire pointer dernier noeud de 'b' vers nouveau premier noeud
-	temp = src->previous; //sauver address dernier noeud
-	src->next->previous = temp; //nouveau premier noeud pointe vers dernier
-	
-	temp = dest->previous; //sauver address dernier de 'a'
-	dest->previous = src; //nouveau 2e de 'a' pointe mnt sur src
-	temp->next = src; //dernier de 'a' pointe mnt sur src
-	
-	src->next = dest;
-	src->previous = temp;
+	temp = src->first; // sauver address noeud qui va bouger
+	src->first = src->first->next; // tête pointe mnt vers 2e noeud (futur 1e)
+	if (src->first != NULL)
+		src->first->previous = src->last; //boucler la boucle: nouveau 1e pointe vers dernier
+	//ici en haut, si yavait que 2 noeuds, previous pointerai vers lui-meme
+	if (src->first->next == temp)
+		src->first->next = src->first; // si cest le seul noeud restant (2 à l'origine), son 'next' pointera vers lui meme
+	// QUE FAIRE QUAND IL RESTE 1 SEUL NOEUD ???
 }
