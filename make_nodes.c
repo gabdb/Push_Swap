@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/13 23:46:00 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/15 23:42:03 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	create_stack_a(int count, char **list, t_head *origin)
 		if (!current)
 		{
 			free_all(origin);
-			return ;
+			return ; // exit !!
 		}
 		if (i == 1)
 			origin->first = current;

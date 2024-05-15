@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:54:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/15 16:41:43 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/16 00:49:02 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,23 @@ void	ft_push(t_head *src, t_head *dest)
 		return ;
 	temp = src->first; // sauver address noeud qui va bouger
 	src->first = src->first->next; // tête pointe mnt vers 2e noeud (futur 1e)
-	if (src->first != NULL)
+	if (src->first == temp && src->last == temp) // enft ca devrait doffice etre '&&'
+	{
+		src->first = NULL; // ici cest si le stack est nouvellement vide
+		src->last = NULL;
+	}
+	else
+	{
 		src->first->previous = src->last; //boucler la boucle: nouveau 1e pointe vers dernier
-	//ici en haut, si yavait que 2 noeuds, previous pointerai vers lui-meme
-	if (src->first->next == temp)
-		src->first->next = src->first; // si cest le seul noeud restant (2 à l'origine), son 'next' pointera vers lui meme
-	// QUE FAIRE QUAND IL RESTE 1 SEUL NOEUD ???
+		src->last->next = src->first;
+	}
+	dest->first = temp; //rattacher le nouveau au début du 2e stack
+	if (dest->last == NULL) // == NULL ça veut dire que stack était vide
+		dest->last = dest->first;
+	dest->first->previous = dest->last; //prev du nouveau 1e pointe vers dernier noeud du stack
+	dest->first->next = dest->last->next; //next du nouveau 1e pointe vers ancien 1e
+	if (dest->first->previous == dest->first)
+	{ // cas spécial: si 2e stack ett vide, ce pointer en question pointera 'faussement' sur l'ancien 'next' du nouveau 1e
+		dest->first->next = dest->first; //régler le pb: 'next' du nouveau 1e pointe vers lui-meme (seulement s'il est SEUL !)
+	}
 }
