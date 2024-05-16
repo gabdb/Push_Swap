@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/16 15:55:21 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/17 00:32:22 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ t_head	*init_head(void);
 void	ft_swap(t_head *origin);
 void	ft_double_swap(t_head *head_a, t_head *head_b);
 void	ft_push(t_head *src, t_head *dest);
+void	ft_rotate(t_head *origin);
+void	ft_rev_rotate(t_head *origin);
 
 // UTILS PROTOTYPES
 long	my_atoi(char *str);

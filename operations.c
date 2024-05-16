@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:54:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/16 23:21:38 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/17 00:17:29 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,29 @@ void	ft_push(t_head *src, t_head *dest)
 	dest->first->next = dest->last->next; //next du nouveau 1e pointe vers ancien 1e
 	if (dest->first->previous == dest->first) // si cst le cas, dest->first->previous == lui-meme
 		dest->first->next = dest->first; //régler le pb: 'next' du nouveau 1e pointe vers lui-meme au lieu de -> l'ancien 'next' qui est mnt le 1e de src
+}
+
+void	ft_rotate(t_head *origin)
+{
+	t_node	*current;
+	int		temp1; //bcp plus simple de changer les int plutôt que TOUS les pointers
+	int		temp2;
+
+	if (!origin || !origin->first || origin->last == origin->first)
+		return ;
+	current = origin->last;
+	temp1 = current->value;
+	current->value = origin->first->value;
+	while (current != origin->first)
+	{
+		current = current->previous;
+		temp2 = current->value;
+		current->value = temp1;
+		temp1 = temp2;
+	}
+}
+
+void	ft_rev_rotate(t_head *origin)
+{
+	
 }

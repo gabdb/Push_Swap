@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/16 23:17:40 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/17 00:17:00 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ int main(int ac, char **av)
 /*
 int main(int ac, char **av)
 {
-	if (valid_input(ac, av) == 0)
-		return (printf("Error: invalid input !\n"));
+    if (1 == ac)
+        return (printf("empty argument !\n"), 0);
+	else if (valid_input(ac, av) == 0)
+		return (printf("Error: non-digit input !\n"));
 	else if (check_doubles(ac, av) == 0)
 		return (printf("Error: doublons !\n"), 0);
 	else
@@ -57,6 +59,24 @@ int main(int ac, char **av)
 	printf("address 'first': %p\n", origin_a->first);
 	printf("address 'last': %p\n\n", origin_a->last);
 	for (int i = 1; i < ac; i++)
+	{
+		printf("%d'th node : %p\n", i, current);
+		printf(" ------------------------------- \n");
+		printf("|                              |\n");
+		printf("| nbr: %d                       |\n", current->value);
+		printf("|                              |\n");
+		printf("| address prev: %p |\n", current->previous);
+		printf("|                              |\n");
+		printf("| address next: %p |\n", current->next);
+		printf("|                              |\n");
+		printf(" ------------------------------- \n\n");
+		current = current->next;
+	}
+
+    ft_rotate(origin_a);
+    printf("AFTER ROTATE: \n\n");
+
+    for (int i = 1; i < ac; i++)
 	{
 		printf("%d'th node : %p\n", i, current);
 		printf(" ------------------------------- \n");
