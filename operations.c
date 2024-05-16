@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:54:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/16 15:55:05 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/16 23:21:38 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	ft_push(t_head *src, t_head *dest)
 		dest->last = dest->first;
 	dest->first->previous = dest->last; //prev du nouveau 1e pointe vers dernier noeud du stack
 	dest->first->next = dest->last->next; //next du nouveau 1e pointe vers ancien 1e
-	if (dest->first->previous == dest->first)
-	{ // cas spécial: si 2e stack ett vide, ce pointer en question pointera 'faussement' sur l'ancien 'next' du nouveau 1e
-		dest->first->next = dest->first; //régler le pb: 'next' du nouveau 1e pointe vers lui-meme (seulement s'il est SEUL !)
-	}
+	if (dest->first->previous == dest->first) // si cst le cas, dest->first->previous == lui-meme
+		dest->first->next = dest->first; //régler le pb: 'next' du nouveau 1e pointe vers lui-meme au lieu de -> l'ancien 'next' qui est mnt le 1e de src
 }

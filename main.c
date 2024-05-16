@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/16 16:10:50 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/16 23:17:40 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int main(int ac, char **av)
 }
 */
 
+/*
 void print_stack_details(t_head *origin)
 {
     if (origin == NULL || origin->first == NULL) {
@@ -99,7 +100,7 @@ void print_stack_details(t_head *origin)
         i++;
     } while (current != origin->first);
 }
-/*
+
 int main(int ac, char **av)
 {
     if (ac < 2) {
