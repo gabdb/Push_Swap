@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:54:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/16 00:49:02 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:55:05 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_swap(t_head *origin)
 	current->next->value = temp;
 }
 
-void	ft_double_swap(t_node *head_a, t_node *head_b)
+void	ft_double_swap(t_head *head_a, t_head *head_b)
 {
 	ft_swap(head_a);
 	ft_swap(head_b);

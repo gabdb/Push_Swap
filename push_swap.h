@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/13 23:44:40 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:55:21 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	create_stack_a(int count, char **list, t_head *origin);
 t_head	*init_head(void);
 
 // OPERATIONS
-void	ft_swap(t_node *origin);
-void	ft_double_swap(t_node *head_a, t_node *head_b);
-void	ft_push(t_node *src, t_node *dest);
+void	ft_swap(t_head *origin);
+void	ft_double_swap(t_head *head_a, t_head *head_b);
+void	ft_push(t_head *src, t_head *dest);
 
 // UTILS PROTOTYPES
 long	my_atoi(char *str);

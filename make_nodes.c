@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/15 23:42:03 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:39:55 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,16 @@ void	free_all(t_head *origin)
 
 	if (!origin)
 		return ;
-	current = origin->first;
-	while (current != NULL && current != origin->first)
+	if (origin->first)
 	{
-		volgende = current->next;
-		free(current);
-		current = volgende;
+		current = origin->first->next;
+		free(origin->first);
+		while (current != origin->first) // && current != NULL
+		{
+			volgende = current->next;
+			free(current);
+			current = volgende;
+		}
 	}
 	free(origin);
 }
