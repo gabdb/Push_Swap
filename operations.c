@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:54:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/17 00:17:29 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:28:59 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,17 @@ void	ft_rotate(t_head *origin)
 
 void	ft_rev_rotate(t_head *origin)
 {
-	
+	t_node	*current;
+	int		save;
+
+	if (!origin || !origin->first || origin->last == origin->first)
+		return ;
+	save = origin->last->value;
+	current = origin->last;
+	while (current != origin->first)
+	{
+		current->value = current->previous->value;
+		current = current->previous;
+	}
+	current->value = save;
 }

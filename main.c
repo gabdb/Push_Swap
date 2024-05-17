@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/17 00:17:00 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:28:14 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int main(int ac, char **av)
 		current = current->next;
 	}
 
-    ft_rotate(origin_a);
-    printf("AFTER ROTATE: \n\n");
+    ft_rev_rotate(origin_a);
+    printf("AFTER REV_ROTATE: \n\n");
 
     for (int i = 1; i < ac; i++)
 	{
