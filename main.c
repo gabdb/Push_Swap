@@ -6,13 +6,13 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/18 02:08:02 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/18 16:52:07 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
+
 int main(int ac, char **av)
 {
 	char	**list;
@@ -32,6 +32,7 @@ int main(int ac, char **av)
 		return (printf("Error: doublons !\n"), 0);
 	else
 		printf("valid input for push_swap !\n");
+	printf("#of integers: %d\n\n", count - 1);
 	
 	t_head	*head_A = init_head();
 	t_head	*head_B = init_head();
@@ -51,7 +52,7 @@ int main(int ac, char **av)
 
 	return 0;
 }
-*/
+
 
 /*
 int main(int ac, char **av)

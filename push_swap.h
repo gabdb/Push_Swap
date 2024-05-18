@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/18 01:06:07 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:08:26 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	ft_rotate(t_head *origin);
 void	ft_rev_rotate(t_head *origin);
 
 // HELP OPERATIONS
+void	handle_empty_case(t_head *dest, t_node *save);
+void	handle_not_empty(t_head *dest, t_node *save);
 void	ft_double_swap(t_head *head_a, t_head *head_b);
 
 // UTILS PROTOTYPES

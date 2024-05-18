@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:54:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/18 01:55:10 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:09:45 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,10 @@ void	ft_push(t_head *src, t_head *dest)
 		src->first->previous = src->last; //boucler la boucle: nouveau 1e pointe vers dernier
 		src->last->next = src->first;
 	}
-	if (dest->first == NULL) //faudra sous-traiter pour gagner de l'espace
-	{
-		dest->first = save;
-		dest->last = save;
-		save->previous = save;
-		save->next = save;
-	}
-	else //pareil: sous-traiter !
-	{
-		save->next = dest->first;
-		save->previous = dest->last;
-		dest->first->previous = save;
-		dest->last->next = save;
-		dest->first = save;
-	}
+	if (dest->first == NULL) //sous-traité pour gagner de l'espace
+		handle_empty_case(dest, save);
+	else
+		handle_not_empty(dest, save);
 }
 
 void	ft_rotate(t_head *origin)
