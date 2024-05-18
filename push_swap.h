@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/17 00:32:22 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/18 01:06:07 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ t_head	*init_head(void);
 
 // OPERATIONS
 void	ft_swap(t_head *origin);
-void	ft_double_swap(t_head *head_a, t_head *head_b);
 void	ft_push(t_head *src, t_head *dest);
 void	ft_rotate(t_head *origin);
 void	ft_rev_rotate(t_head *origin);
+
+// HELP OPERATIONS
+void	ft_double_swap(t_head *head_a, t_head *head_b);
 
 // UTILS PROTOTYPES
 long	my_atoi(char *str);
@@ -64,3 +66,8 @@ int		my_strcmp(char *s1, char *s2);
 
 // SPECIAL SPLIT (faudra enlever et rajouter libft)
 char	**ft_split(char const *s, char c);
+
+//ALGO MITEUX (plûtot un test, probablement à supprimer)
+int 	index_min(t_head *origin);
+int		algo_merde(t_head *head_a, t_head *head_b);
+void	print_stack(t_head *head);

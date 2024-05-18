@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/17 15:28:14 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/18 02:08:02 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,22 @@ int main(int ac, char **av)
 		return (printf("Error: doublons !\n"), 0);
 	else
 		printf("valid input for push_swap !\n");
+	
+	t_head	*head_A = init_head();
+	t_head	*head_B = init_head();
+	create_stack_a(count, list, head_A);
+	int aantal_op = algo_merde(head_A, head_B);
+	t_node	*current = head_A->first->next;
+	printf("%d\n", head_A->first->value);
+	while (current != head_A->first)
+	{
+		printf("%d\n", current->value);
+		current = current->next;
+	}
+	printf("\n aantal allowed operations: %d", aantal_op);
+
+	free_all(head_A);
+	free_all(head_B);
 
 	return 0;
 }
@@ -120,13 +136,10 @@ void print_stack_details(t_head *origin)
         i++;
     } while (current != origin->first);
 }
-
+*/
+/*
 int main(int ac, char **av)
 {
-    if (ac < 2) {
-        printf("Usage: %s <number1> <number2> ... <numberN>\n", av[0]);
-        return 1;
-    }
     if (valid_input(ac, av) == 0)
         return (printf("Error: invalid input!\n"));
     else if (check_doubles(ac, av) == 0)
@@ -135,25 +148,19 @@ int main(int ac, char **av)
         printf("Valid input for push_swap!\n\n");
 
     t_head *origin_a = init_head();
-    t_head *origin_b = init_head(); // Initialize stack b, initially empty
+    t_head *origin_b = init_head();
 
     create_stack_a(ac, av, origin_a);
-    printf("Stack A initialization complete:\n");
-    print_stack_details(origin_a);
-
-    // Let's try to push the first element from A to B
-    if (origin_a->first != NULL) {
-        printf("Pushing top node from Stack A to Stack B:\n");
-        ft_push(origin_a, origin_b);
-        printf("Stack A after one push:\n");
-        print_stack_details(origin_a);
-        printf("Stack B after one push:\n");
-        print_stack_details(origin_b);
-
-        // Optionally, push more nodes or perform other operations
-        // while (origin_a->first != NULL)
-        //     ft_push(origin_a, origin_b);
-    }
+    //print_stack_details(origin_a);
+	for (int x = 0; x < 5; x++)
+	{
+        printf("Stack A:\n");
+        print_stack(origin_a);
+        printf("Stack B:\n");
+        print_stack(origin_b);
+    	printf("ft_push arrive !\n");
+    	ft_push(origin_a, origin_b);
+	}
 
     // Clean up
     free_all(origin_a);
