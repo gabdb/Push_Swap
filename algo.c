@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:56:30 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/18 02:02:01 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/19 17:14:49 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,27 +63,42 @@ int index_min(t_head *origin)
 
 int	algo_merde(t_head *head_a, t_head *head_b)
 {
-	int		aantal_op = 0; //to return
-	int		cost;
 	int		i;
+	int		index;
+	int		length;
+	int		aantal_op;
 
-	while (head_a->first != head_a->last) //plus que 1 (le plus grand)
+	aantal_op = 0;
+	length = list_length(head_a);
+	while (length > 1)
 	{
-		cost = index_min(head_a);
-		i = 0;
-		while (i < cost)
+		index = index_min(head_a);
+		if (index < (length / 2))
 		{
-			ft_rotate(head_a);
-			i++;
+			i = 0;
+			while (i++ < index)
+			{
+				ft_rotate(head_a);
+				aantal_op++;
+			}
 		}
-		aantal_op += cost;
+		else
+		{
+			i = index;
+			while (i++ < length)
+			{
+				ft_rev_rotate(head_a);
+				aantal_op++;
+			}
+		}
 		ft_push(head_a, head_b);
-		aantal_op += 1;
+		aantal_op++;
+		length--;
 	}
 	while (head_b->first != NULL)
 	{
 		ft_push(head_b, head_a);
-		aantal_op += 1;
+		aantal_op++;
 	}
 	return (aantal_op);
 }
