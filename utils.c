@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:53 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/13 18:42:25 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/20 18:41:26 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,22 @@ int	my_strcmp(char *s1, char *s2)
 	while (s1[i] == s2[i] && s1[i])
 		i++;
 	return (s1[i] - s2[i]);
+}
+
+
+void	print_stack(t_head *head)
+{
+	t_node *current = head->first;
+
+	if (!head || !head->first)
+	{
+		printf("stack est vide ! (ou head pas init)\n\n");
+		return ;
+	}
+	while (current != head->last)
+	{
+		printf("%d\n", current->value);
+		current = current->next;
+	}
+	printf("%d\n\n", head->last->value);
 }

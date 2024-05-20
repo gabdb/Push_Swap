@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:56:30 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/19 17:14:49 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/20 18:41:21 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,34 @@ int list_length(t_head *origin)
 		current = current->next;
 	}
 	return (count);
+}
+
+int index_max(t_head *origin)
+{
+	t_node	*current;
+	int		index;
+	int		save_index;
+	int		maximum;
+
+	if (!origin || !origin->first)
+		return (-1);
+	if (origin->first == origin->last)
+		return (0);
+	index = 1;
+	save_index = 0;
+	maximum = origin->first->value;
+	current = origin->first->next;;
+	while (current != origin->first)
+	{
+		if (current->value > maximum)
+		{
+			maximum = current->value;
+			save_index = index;
+		}
+		index++;
+		current = current->next;
+	}
+	return (save_index);
 }
 
 int index_min(t_head *origin)
@@ -70,7 +98,7 @@ int	algo_merde(t_head *head_a, t_head *head_b)
 
 	aantal_op = 0;
 	length = list_length(head_a);
-	while (length > 1)
+	while (length > 3)
 	{
 		index = index_min(head_a);
 		if (index < (length / 2))
@@ -95,6 +123,7 @@ int	algo_merde(t_head *head_a, t_head *head_b)
 		aantal_op++;
 		length--;
 	}
+	aantal_op += ft_sort_3(head_a);
 	while (head_b->first != NULL)
 	{
 		ft_push(head_b, head_a);
@@ -103,19 +132,25 @@ int	algo_merde(t_head *head_a, t_head *head_b)
 	return (aantal_op);
 }
 
-void	print_stack(t_head *head)
+int	ft_rev_sort_3(t_head *head)
 {
-	t_node *current = head->first;
+	int	count_op;
 
-	if (!head || !head->first)
+	count_op = 0;
+	if (index_min(head) == 0)
 	{
-		printf("stack est vide ! (ou head pas init)\n\n");
-		return ;
-	}
-	while (current != head->last)
+		ft_rotate(head);
+		count_op++;
+	}  
+	else if (index_min(head) == 1)
 	{
-		printf("%d\n", current->value);
-		current = current->next;
+		ft_rev_rotate(head);
+		count_op++;
 	}
-	printf("%d\n\n", head->last->value);
+	if (head->first->value < head->first->next->value)
+	{
+		ft_swap(head);
+		count_op++;
+	}
+	return (count_op);
 }
