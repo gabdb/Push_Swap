@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/20 18:41:55 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/20 23:51:49 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,12 @@ int 	index_max(t_head *origin);
 int		algo_merde(t_head *head_a, t_head *head_b);
 int		ft_rev_sort_3(t_head *head);
 
-// ALGO HORRIBLE
+// ALGO 2 fichier
 int		algo_nul(t_head *head_a, t_head *head_b);
+int		index_bf(int value, t_head *head);
+int 	ft_min(t_head *head);
+int 	ft_max(t_head *head);
+int		ft_rev_sort_3(t_head *head);
+int		cost_rotate(int value, t_head *head);
+int		cost_rev_rotate(int value, t_head *head);
+void	max_on_top(t_head *head, int *count);

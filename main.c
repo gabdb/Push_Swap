@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/20 18:24:06 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/20 23:54:52 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(int ac, char **av)
 	t_head	*head_A = init_head();
 	t_head	*head_B = init_head();
 	create_stack_a(count, list, head_A);
-	int aantal_op = algo_merde(head_A, head_B);
+	int aantal_op = algo_nul(head_A, head_B);
 	t_node	*current = head_A->first->next;
 	printf("%d\n", head_A->first->value);
 	while (current != head_A->first)

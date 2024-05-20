@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:25:19 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/20 18:59:26 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/20 23:50:19 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	cost_rotate(int value, t_head *head)
 		cost = index_max(head);
 	else
 		cost = index_bf(value, head);
+	return (cost);
 }
 
 int	cost_rev_rotate(int value, t_head *head)
@@ -103,23 +104,74 @@ int	cost_rev_rotate(int value, t_head *head)
 		cost = list_length(head) - index_max(head);
 	else
 		cost = list_length(head) - index_bf(value, head);
+	return (cost);
 }
 
 int	algo_nul(t_head *head_a, t_head *head_b)
 {
-	int		i;
-	int		len;
+	int		cost;
 	int		count_op;
-	t_node	*current;
+	int		value;
 
-	len = list_length(head_a) / 2;
+	count_op = 0;
 	while (list_length(head_b) < 3)
 		ft_push(head_a, head_b);
 	count_op += 3;
 	count_op += ft_rev_sort_3(head_b);
 	while (head_a->first != NULL)
 	{
-		// push chaque element dans B (qui est trié Descending) en checkant rot ou rev_rot
-		// à l'aide des fonctions en haut
+		value = head_a->first->value;
+		if (cost_rotate(value, head_b) < cost_rev_rotate(value, head_b))
+		{
+			cost = cost_rotate(value, head_b) + 1;
+			while (--cost > 0)
+			{
+				ft_rotate(head_b);
+				count_op++;	
+			}
+		}
+		else
+		{
+			cost = cost_rev_rotate(value, head_b);
+			while (--cost > 0)
+			{
+				ft_rev_rotate(head_b);
+				count_op++;	
+			}
+		}
+		ft_push(head_a, head_b);
+		count_op++;
+	}
+	max_on_top(head_b, &count_op);
+	while (head_b->first != NULL)
+	{
+		ft_push(head_b, head_a);
+		count_op++;
+	}
+	return (count_op);
+}
+
+void	max_on_top(t_head *head, int *count)
+{
+	int	index;
+	int	len;
+
+	len = list_length(head);
+	index = index_max(head);
+	if (index < (len / 2))
+	{
+		while (index-- > 0)
+		{
+			ft_rotate(head);
+			(*count)++;
+		}
+	}
+	else
+	{
+		while (index++ < len)
+		{
+			ft_rev_rotate(head);
+			(*count)++;
+		}
 	}
 }

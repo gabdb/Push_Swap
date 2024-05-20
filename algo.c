@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:56:30 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/20 18:41:21 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/20 23:53:56 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	algo_merde(t_head *head_a, t_head *head_b)
 
 	aantal_op = 0;
 	length = list_length(head_a);
-	while (length > 3)
+	while (length > 1)
 	{
 		index = index_min(head_a);
 		if (index < (length / 2))
@@ -123,34 +123,11 @@ int	algo_merde(t_head *head_a, t_head *head_b)
 		aantal_op++;
 		length--;
 	}
-	aantal_op += ft_sort_3(head_a);
+	//aantal_op += ft_sort_3(head_a);
 	while (head_b->first != NULL)
 	{
 		ft_push(head_b, head_a);
 		aantal_op++;
 	}
 	return (aantal_op);
-}
-
-int	ft_rev_sort_3(t_head *head)
-{
-	int	count_op;
-
-	count_op = 0;
-	if (index_min(head) == 0)
-	{
-		ft_rotate(head);
-		count_op++;
-	}  
-	else if (index_min(head) == 1)
-	{
-		ft_rev_rotate(head);
-		count_op++;
-	}
-	if (head->first->value < head->first->next->value)
-	{
-		ft_swap(head);
-		count_op++;
-	}
-	return (count_op);
 }
