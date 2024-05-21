@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:25:19 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/20 23:50:19 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:31:58 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	index_bf(int value, t_head *head)
 		index++;
 		current = current->next;
 	}
+	return (index);
 }
 
 int ft_min(t_head *head)
@@ -112,6 +113,7 @@ int	algo_nul(t_head *head_a, t_head *head_b)
 	int		cost;
 	int		count_op;
 	int		value;
+	int		i;
 
 	count_op = 0;
 	while (list_length(head_b) < 3)
@@ -120,11 +122,24 @@ int	algo_nul(t_head *head_a, t_head *head_b)
 	count_op += ft_rev_sort_3(head_b);
 	while (head_a->first != NULL)
 	{
+		i = index_chosen_one(head_a, head_b);
+		if (i < (list_length(head_a) / 2))
+		{
+			count_op += i;
+			while (i-- > 0)
+				ft_rotate(head_a);
+		}
+		else
+		{
+			count_op += list_length(head_a) - i;
+			while (i++ < list_length(head_a))
+				ft_rev_rotate(head_a);
+		}
 		value = head_a->first->value;
 		if (cost_rotate(value, head_b) < cost_rev_rotate(value, head_b))
 		{
-			cost = cost_rotate(value, head_b) + 1;
-			while (--cost > 0)
+			cost = cost_rotate(value, head_b);
+			while (cost-- > 0)
 			{
 				ft_rotate(head_b);
 				count_op++;	
@@ -133,7 +148,7 @@ int	algo_nul(t_head *head_a, t_head *head_b)
 		else
 		{
 			cost = cost_rev_rotate(value, head_b);
-			while (--cost > 0)
+			while (cost-- > 0)
 			{
 				ft_rev_rotate(head_b);
 				count_op++;	
@@ -141,6 +156,7 @@ int	algo_nul(t_head *head_a, t_head *head_b)
 		}
 		ft_push(head_a, head_b);
 		count_op++;
+		//print_stack(head_b);
 	}
 	max_on_top(head_b, &count_op);
 	while (head_b->first != NULL)
@@ -174,4 +190,36 @@ void	max_on_top(t_head *head, int *count)
 			(*count)++;
 		}
 	}
+}
+int	index_chosen_one(t_head *head_a, t_head *head_b)
+{
+	t_node	*current;
+	int		best_index;
+	int		index;
+	int		cost;
+	int		len;
+
+	len = list_length(head_a);
+	best_index = 0;
+	index = 0;
+	cost = cost_rotate(head_a->first->value, head_b) + index;
+	if (cost_rev_rotate(head_a->first->value, head_b) + len - index < cost)
+		cost = cost_rev_rotate(head_a->first->value, head_b) + len - index;
+	current = head_a->first->next;
+	while (current != head_a->first)
+	{
+		index++;
+		if (cost_rotate(current->value, head_b) + index < cost)
+		{
+			cost = cost_rotate(current->value, head_b) + index;
+			best_index = index;
+		}
+		else if (cost_rev_rotate(current->value, head_b) + len - index < cost)
+		{
+			cost = cost_rev_rotate(current->value, head_b) + len - index;
+			best_index = index;
+		}
+		current = current->next;
+	}
+	return (best_index);
 }

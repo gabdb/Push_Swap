@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/20 23:51:49 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:29:17 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,3 +87,4 @@ int		ft_rev_sort_3(t_head *head);
 int		cost_rotate(int value, t_head *head);
 int		cost_rev_rotate(int value, t_head *head);
 void	max_on_top(t_head *head, int *count);
+int		index_chosen_one(t_head *head_a, t_head *head_b);

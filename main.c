@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/20 23:54:52 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:41:53 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,13 @@ int main(int ac, char **av)
 	else
 		printf("valid input for push_swap !\n");
 	printf("#of integers: %d\n\n", count - 1);
-	
+
 	t_head	*head_A = init_head();
 	t_head	*head_B = init_head();
 	create_stack_a(count, list, head_A);
 	int aantal_op = algo_nul(head_A, head_B);
 	t_node	*current = head_A->first->next;
-	printf("%d\n", head_A->first->value);
-	while (current != head_A->first)
-	{
-		printf("%d\n", current->value);
-		current = current->next;
-	}
+	print_stack(head_A);
 	printf("\n aantal allowed operations: %d", aantal_op);
 
 	free_all(head_A);
