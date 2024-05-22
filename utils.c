@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:53 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/20 18:41:26 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:18:21 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ void	print_stack(t_head *head)
 		printf("%d\n", current->value);
 		current = current->next;
 	}
-	printf("%d\n\n", head->last->value);
+	printf("%d\n", head->last->value);
 }

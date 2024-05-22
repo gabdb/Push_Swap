@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:25:19 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/21 15:31:58 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:25:01 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int ft_min(t_head *head)
 			min = current->value;
 		current = current->next;
 	}
+	if (current->value < min)
+		min = current->value;
 	return (min);
 }
 
@@ -58,6 +60,8 @@ int ft_max(t_head *head)
 			max = current->value;
 		current = current->next;
 	}
+	if (current->value > max)
+		max = current->value;
 	return (max);
 }
 
@@ -122,6 +126,7 @@ int	algo_nul(t_head *head_a, t_head *head_b)
 	count_op += ft_rev_sort_3(head_b);
 	while (head_a->first != NULL)
 	{
+		//print_stack(head_b);
 		i = index_chosen_one(head_a, head_b);
 		if (i < (list_length(head_a) / 2))
 		{
@@ -156,7 +161,6 @@ int	algo_nul(t_head *head_a, t_head *head_b)
 		}
 		ft_push(head_a, head_b);
 		count_op++;
-		//print_stack(head_b);
 	}
 	max_on_top(head_b, &count_op);
 	while (head_b->first != NULL)
@@ -214,7 +218,7 @@ int	index_chosen_one(t_head *head_a, t_head *head_b)
 			cost = cost_rotate(current->value, head_b) + index;
 			best_index = index;
 		}
-		else if (cost_rev_rotate(current->value, head_b) + len - index < cost)
+		if (cost_rev_rotate(current->value, head_b) + len - index < cost)
 		{
 			cost = cost_rev_rotate(current->value, head_b) + len - index;
 			best_index = index;

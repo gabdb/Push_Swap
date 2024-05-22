@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:56:30 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/20 23:53:56 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:58:54 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int list_length(t_head *origin)
 		return (-1);
 	else if (!origin->first)
 		return (0);
-	else if (origin->first == origin->first->next)
+	else if (origin->first == origin->last)
 		return (1);
 	count = 1;
 	current = origin->first->next;
@@ -47,7 +47,7 @@ int index_max(t_head *origin)
 	index = 1;
 	save_index = 0;
 	maximum = origin->first->value;
-	current = origin->first->next;;
+	current = origin->first->next;
 	while (current != origin->first)
 	{
 		if (current->value > maximum)
@@ -75,7 +75,7 @@ int index_min(t_head *origin)
 	index = 1;
 	save_index = 0;
 	minimum = origin->first->value;
-	current = origin->first->next;;
+	current = origin->first->next;
 	while (current != origin->first)
 	{
 		if (current->value < minimum)
