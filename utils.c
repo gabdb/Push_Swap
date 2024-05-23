@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:53 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/22 16:18:21 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:45:18 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,28 @@ void	print_stack(t_head *head)
 		printf("%d\n", current->value);
 		current = current->next;
 	}
-	printf("%d\n", head->last->value);
+	printf("%d\n\n", head->last->value);
+}
+
+int	ft_small(int a, int b) //promo en utilisant rr / rrr
+{
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
+int	value_at_index(t_head *head, int index)
+{
+	t_node	*current;
+	int		i;
+
+	current = head->first;
+	i = 0;
+	while (i < index)
+	{
+		current = current->next;
+		i++;
+	}
+	return (current->value);
 }

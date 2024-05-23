@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:54:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/18 17:09:45 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:50:43 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,17 @@ void	ft_rev_rotate(t_head *origin)
 		current = current->previous;
 	}
 	current->value = save;
+}
+
+void	ft_double_rotate(t_head *head_a, t_head *head_b) //, int *count_op)
+{
+	ft_rotate(head_a);
+	ft_rotate(head_b);
+	// *count_op += 2;
+}
+
+void	ft_double_rev_rotate(t_head *head_a, t_head *head_b)
+{
+	ft_rev_rotate(head_a);
+	ft_rev_rotate(head_b);
 }

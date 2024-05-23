@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/21 15:29:17 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:24:42 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ void	ft_swap(t_head *origin);
 void	ft_push(t_head *src, t_head *dest);
 void	ft_rotate(t_head *origin);
 void	ft_rev_rotate(t_head *origin);
+void	ft_double_rotate(t_head *head_a, t_head *head_b);
+void	ft_double_rev_rotate(t_head *head_a, t_head *head_b);
+
 
 // HELP OPERATIONS
 void	handle_empty_case(t_head *dest, t_node *save);
@@ -66,6 +69,8 @@ void	ft_double_swap(t_head *head_a, t_head *head_b);
 long	my_atoi(char *str);
 int		my_strcmp(char *s1, char *s2);
 void	print_stack(t_head *head);
+int		ft_small(int a, int b);
+int		value_at_index(t_head *head, int index);
 
 
 // SPECIAL SPLIT (faudra enlever et rajouter libft)

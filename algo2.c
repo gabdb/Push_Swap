@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:25:19 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/22 16:25:01 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/23 21:44:15 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,35 +128,49 @@ int	algo_nul(t_head *head_a, t_head *head_b)
 	{
 		//print_stack(head_b);
 		i = index_chosen_one(head_a, head_b);
-		if (i < (list_length(head_a) / 2))
+		//printf("index chosen one is : %d\n", i);
+		value = value_at_index(head_a, i);
+		cost = cost_rotate(value, head_b); // COST EST FALSIFIÉ A CAUSE DE FT_SMALL ?
+		if (cost_rev_rotate(value, head_b) < cost)
+			cost = cost_rev_rotate(value, head_b);
+		if (cost == cost_rotate(value, head_b))
 		{
-			count_op += i;
+			while (i > 0 && cost > 0)
+			{
+				ft_double_rotate(head_a, head_b);
+				count_op++;
+				i--;
+				cost--;
+			}
 			while (i-- > 0)
+			{
 				ft_rotate(head_a);
-		}
-		else
-		{
-			count_op += list_length(head_a) - i;
-			while (i++ < list_length(head_a))
-				ft_rev_rotate(head_a);
-		}
-		value = head_a->first->value;
-		if (cost_rotate(value, head_b) < cost_rev_rotate(value, head_b))
-		{
-			cost = cost_rotate(value, head_b);
+				count_op++;
+			}
 			while (cost-- > 0)
 			{
 				ft_rotate(head_b);
-				count_op++;	
+				count_op++;
 			}
 		}
 		else
 		{
-			cost = cost_rev_rotate(value, head_b);
+			while (i < list_length(head_a) && cost > 0)
+			{
+				ft_double_rev_rotate(head_a, head_b);
+				count_op++;
+				i++;
+				cost--;
+			}
+			while (i++ < list_length(head_a))
+			{
+				ft_rev_rotate(head_a);
+				count_op++;
+			}
 			while (cost-- > 0)
 			{
 				ft_rev_rotate(head_b);
-				count_op++;	
+				count_op++;
 			}
 		}
 		ft_push(head_a, head_b);
@@ -206,21 +220,21 @@ int	index_chosen_one(t_head *head_a, t_head *head_b)
 	len = list_length(head_a);
 	best_index = 0;
 	index = 0;
-	cost = cost_rotate(head_a->first->value, head_b) + index;
-	if (cost_rev_rotate(head_a->first->value, head_b) + len - index < cost)
-		cost = cost_rev_rotate(head_a->first->value, head_b) + len - index;
+	cost = cost_rotate(head_a->first->value, head_b) + index - ft_small(cost_rotate(head_a->first->value, head_b), index);
+	if (cost_rev_rotate(head_a->first->value, head_b) + len - index - ft_small(cost_rev_rotate(head_a->first->value, head_b), len - index) < cost)
+		cost = cost_rev_rotate(head_a->first->value, head_b) + len - index - ft_small(cost_rev_rotate(head_a->first->value, head_b), len - index);
 	current = head_a->first->next;
 	while (current != head_a->first)
 	{
 		index++;
-		if (cost_rotate(current->value, head_b) + index < cost)
+		if ((cost_rotate(current->value, head_b) + index - ft_small(cost_rotate(current->value, head_b), index)) < cost)
 		{
-			cost = cost_rotate(current->value, head_b) + index;
+			cost = cost_rotate(current->value, head_b) + index - ft_small(cost_rotate(current->value, head_b), index);
 			best_index = index;
 		}
-		if (cost_rev_rotate(current->value, head_b) + len - index < cost)
+		if ((cost_rev_rotate(current->value, head_b) + len - index - ft_small(cost_rev_rotate(current->value, head_b), len - index)) < cost)
 		{
-			cost = cost_rev_rotate(current->value, head_b) + len - index;
+			cost = cost_rev_rotate(current->value, head_b) + len - index - ft_small(cost_rev_rotate(current->value, head_b), len - index);
 			best_index = index;
 		}
 		current = current->next;
