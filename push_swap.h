@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/23 19:24:42 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:51:50 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,15 @@ void	handle_empty_case(t_head *dest, t_node *save);
 void	handle_not_empty(t_head *dest, t_node *save);
 void	ft_double_swap(t_head *head_a, t_head *head_b);
 
-// UTILS PROTOTYPES
+// UTILS
 long	my_atoi(char *str);
 int		my_strcmp(char *s1, char *s2);
 void	print_stack(t_head *head);
 int		ft_small(int a, int b);
 int		value_at_index(t_head *head, int index);
-
+int		ft_average(t_head *head);
+void	max_on_top(t_head *head, int *count);
+void	min_on_top(t_head *head, int *count);
 
 // SPECIAL SPLIT (faudra enlever et rajouter libft)
 char	**ft_split(char const *s, char c);
@@ -82,6 +84,7 @@ int 	index_min(t_head *origin);
 int 	index_max(t_head *origin);
 int		algo_merde(t_head *head_a, t_head *head_b);
 int		ft_rev_sort_3(t_head *head);
+int		ft_sort_3(t_head *head);
 
 // ALGO 2 fichier
 int		algo_nul(t_head *head_a, t_head *head_b);
@@ -91,5 +94,4 @@ int 	ft_max(t_head *head);
 int		ft_rev_sort_3(t_head *head);
 int		cost_rotate(int value, t_head *head);
 int		cost_rev_rotate(int value, t_head *head);
-void	max_on_top(t_head *head, int *count);
-int		index_chosen_one(t_head *head_a, t_head *head_b);
+int		index_chosen_one(t_head *head_a, t_head *head_b, char *u_or_d);

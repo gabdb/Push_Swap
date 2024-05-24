@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:53 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/23 19:45:18 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:52:31 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,71 @@ int	value_at_index(t_head *head, int index)
 		i++;
 	}
 	return (current->value);
+}
+
+int	ft_average(t_head *head)
+{
+	int		count;
+	int		length;
+	t_node	*current;
+
+	length = list_length(head);
+	count = head->first->value;
+	current = head->first->next;
+	while (current != head->first)
+	{
+		count += current->value;
+		current = current->next;
+	}
+	return (count / length);
+}
+
+void	max_on_top(t_head *head, int *count)
+{
+	int	index;
+	int	len;
+
+	len = list_length(head);
+	index = index_max(head);
+	if (index < (len / 2))
+	{
+		while (index-- > 0)
+		{
+			ft_rotate(head);
+			(*count)++;
+		}
+	}
+	else
+	{
+		while (index++ < len)
+		{
+			ft_rev_rotate(head);
+			(*count)++;
+		}
+	}
+}
+
+void	min_on_top(t_head *head, int *count)
+{
+	int	index;
+	int	len;
+
+	len = list_length(head);
+	index = index_min(head);
+	if (index < (len / 2))
+	{
+		while (index-- > 0)
+		{
+			ft_rotate(head);
+			(*count)++;
+		}
+	}
+	else
+	{
+		while (index++ < len)
+		{
+			ft_rev_rotate(head);
+			(*count)++;
+		}
+	}
 }

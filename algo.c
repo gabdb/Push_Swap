@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:56:30 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/22 14:58:54 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/24 14:12:01 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,4 +130,50 @@ int	algo_merde(t_head *head_a, t_head *head_b)
 		aantal_op++;
 	}
 	return (aantal_op);
+}
+
+int	ft_rev_sort_3(t_head *head)
+{
+	int	count_op;
+
+	count_op = 0;
+	if (index_min(head) == 0)
+	{
+		ft_rotate(head);
+		count_op++;
+	}  
+	else if (index_min(head) == 1)
+	{
+		ft_rev_rotate(head);
+		count_op++;
+	}
+	if (head->first->value < head->first->next->value)
+	{
+		ft_swap(head);
+		count_op++;
+	}
+	return (count_op);
+}
+
+int	ft_sort_3(t_head *head)
+{
+	int	count_op;
+
+	count_op = 0;
+	if (index_max(head) == 0)
+	{
+		ft_rotate(head);
+		count_op++;
+	}  
+	else if (index_max(head) == 1)
+	{
+		ft_rev_rotate(head);
+		count_op++;
+	}
+	if (head->first->value > head->first->next->value)
+	{
+		ft_swap(head);
+		count_op++;
+	}
+	return (count_op);
 }
