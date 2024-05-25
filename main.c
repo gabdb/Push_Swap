@@ -6,12 +6,28 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/21 14:41:53 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:40:43 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	print_stack(t_head *head)
+{
+	t_node *current = head->first;
+
+	if (!head || !head->first)
+	{
+		printf("stack est vide ! (ou head pas init)\n\n");
+		return ;
+	}
+	while (current != head->last)
+	{
+		printf("%d\n", current->value);
+		current = current->next;
+	}
+	printf("%d\n\n", head->last->value);
+}
 
 int main(int ac, char **av)
 {

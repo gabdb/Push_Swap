@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/24 15:51:50 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/26 00:03:53 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
+#include <stdbool.h> //supprimer
+
 
 typedef struct s_getal
 {
@@ -68,7 +70,7 @@ void	ft_double_swap(t_head *head_a, t_head *head_b);
 // UTILS
 long	my_atoi(char *str);
 int		my_strcmp(char *s1, char *s2);
-void	print_stack(t_head *head);
+void	print_stacks(t_head *head_a, t_head *head_b);
 int		ft_small(int a, int b);
 int		value_at_index(t_head *head, int index);
 int		ft_average(t_head *head);
@@ -94,4 +96,7 @@ int 	ft_max(t_head *head);
 int		ft_rev_sort_3(t_head *head);
 int		cost_rotate(int value, t_head *head);
 int		cost_rev_rotate(int value, t_head *head);
-int		index_chosen_one(t_head *head_a, t_head *head_b, char *u_or_d);
+int		index_chosen_one(t_head *src, t_head *dest, char *u_or_d);
+
+// UTILS 2
+char	lowest_half_list(t_head *head);

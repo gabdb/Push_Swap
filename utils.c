@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:53 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/24 16:18:20 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/25 17:59:37 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,35 @@ int	my_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
+void print_stacks(t_head *head_a, t_head *head_b) {
+    t_node *current_a = (head_a->first) ? head_a->first : NULL;
+    t_node *current_b = (head_b->first) ? head_b->first : NULL;
 
-void	print_stack(t_head *head)
-{
-	t_node *current = head->first;
+    bool a_done = (current_a == NULL);
+    bool b_done = (current_b == NULL);
 
-	if (!head || !head->first)
-	{
-		printf("stack est vide ! (ou head pas init)\n\n");
-		return ;
-	}
-	while (current != head->last)
-	{
-		printf("%d\n", current->value);
-		current = current->next;
-	}
-	printf("%d\n\n", head->last->value);
+    while (!a_done || !b_done) {
+        if (!a_done) {
+            printf("%d", current_a->value);
+            current_a = current_a->next;
+            a_done = (current_a == head_a->first);
+        } else {
+            printf("E");
+        }
+
+        printf("     ");
+
+        if (!b_done) {
+            printf("%d", current_b->value);
+            current_b = current_b->next;
+            b_done = (current_b == head_b->first);
+        } else {
+            printf("E");
+        }
+
+        printf("\n");
+    }
+	//printf("\n");
 }
 
 int	ft_small(int a, int b) //promo en utilisant rr / rrr
@@ -136,7 +149,7 @@ void	min_on_top(t_head *head, int *count)
 
 	len = list_length(head);
 	index = index_min(head);
-	if (index < (len / 2))
+	if (index <= (len / 2))
 	{
 		while (index-- > 0)
 		{
