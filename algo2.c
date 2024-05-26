@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:25:19 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/26 00:53:34 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/26 15:42:21 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ int	algo_nul(t_head *head_a, t_head *head_b)
 
 	count_op = 0;
 	value = list_length(head_a); // value ne sert pas a ca, juste pr sauver des variables
-	while ((double)list_length(head_a) > (double)value * 0.77)
+	while ((double)list_length(head_a) > (double)value * 0.66)
 	{
-		if ((double)head_a->first->value < (double)ft_average(head_a) * 0.77)
+		if ((double)head_a->first->value < (double)ft_average(head_a) * 0.73)
 			ft_push(head_a, head_b);
 		else
 			ft_rotate(head_a);
