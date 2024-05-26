@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:34:28 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/18 16:44:52 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/26 16:13:17 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int check_doubles(int count, char **list)
 		j = i + 1;
 		while (j < count)
 		{
-			if (my_strcmp(list[i], list[j]) == 0)
+			if (my_atoi(list[i]) == my_atoi(list[j]))
 				return (0);
 			j++;
 		}
