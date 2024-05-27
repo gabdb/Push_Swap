@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/26 00:03:53 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/27 13:43:19 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	create_stack_a(int count, char **list, t_head *origin);
 t_head	*init_head(void);
 
 // OPERATIONS
-void	ft_swap(t_head *origin);
-void	ft_push(t_head *src, t_head *dest);
-void	ft_rotate(t_head *origin);
-void	ft_rev_rotate(t_head *origin);
+void	ft_swap(t_head *origin, char q);
+void	ft_push(t_head *src, t_head *dest, char q);
+void	ft_rotate(t_head *origin, char q);
+void	ft_rev_rotate(t_head *origin, char q);
 void	ft_double_rotate(t_head *head_a, t_head *head_b);
 void	ft_double_rev_rotate(t_head *head_a, t_head *head_b);
 
@@ -75,7 +75,7 @@ int		ft_small(int a, int b);
 int		value_at_index(t_head *head, int index);
 int		ft_average(t_head *head);
 void	max_on_top(t_head *head, int *count);
-void	min_on_top(t_head *head, int *count);
+void	min_on_top(t_head *head);
 
 // SPECIAL SPLIT (faudra enlever et rajouter libft)
 char	**ft_split(char const *s, char c);
@@ -84,12 +84,10 @@ char	**ft_split(char const *s, char c);
 int 	list_length(t_head *origin);
 int 	index_min(t_head *origin);
 int 	index_max(t_head *origin);
-int		algo_merde(t_head *head_a, t_head *head_b);
-int		ft_rev_sort_3(t_head *head);
-int		ft_sort_3(t_head *head);
+void	ft_sort_3(t_head *head);
 
 // ALGO 2 fichier
-int		algo_nul(t_head *head_a, t_head *head_b);
+void	algo_nul(t_head *head_a, t_head *head_b);
 int		index_bf(int value, t_head *head);
 int 	ft_min(t_head *head);
 int 	ft_max(t_head *head);

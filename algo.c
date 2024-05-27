@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:56:30 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/24 14:12:01 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/27 13:32:39 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,91 +89,12 @@ int index_min(t_head *origin)
 	return (save_index);
 }
 
-int	algo_merde(t_head *head_a, t_head *head_b)
+void	ft_sort_3(t_head *head)
 {
-	int		i;
-	int		index;
-	int		length;
-	int		aantal_op;
-
-	aantal_op = 0;
-	length = list_length(head_a);
-	while (length > 1)
-	{
-		index = index_min(head_a);
-		if (index < (length / 2))
-		{
-			i = 0;
-			while (i++ < index)
-			{
-				ft_rotate(head_a);
-				aantal_op++;
-			}
-		}
-		else
-		{
-			i = index;
-			while (i++ < length)
-			{
-				ft_rev_rotate(head_a);
-				aantal_op++;
-			}
-		}
-		ft_push(head_a, head_b);
-		aantal_op++;
-		length--;
-	}
-	//aantal_op += ft_sort_3(head_a);
-	while (head_b->first != NULL)
-	{
-		ft_push(head_b, head_a);
-		aantal_op++;
-	}
-	return (aantal_op);
-}
-
-int	ft_rev_sort_3(t_head *head)
-{
-	int	count_op;
-
-	count_op = 0;
-	if (index_min(head) == 0)
-	{
-		ft_rotate(head);
-		count_op++;
-	}  
-	else if (index_min(head) == 1)
-	{
-		ft_rev_rotate(head);
-		count_op++;
-	}
-	if (head->first->value < head->first->next->value)
-	{
-		ft_swap(head);
-		count_op++;
-	}
-	return (count_op);
-}
-
-int	ft_sort_3(t_head *head)
-{
-	int	count_op;
-
-	count_op = 0;
 	if (index_max(head) == 0)
-	{
-		ft_rotate(head);
-		count_op++;
-	}  
+		ft_rotate(head, 'a');
 	else if (index_max(head) == 1)
-	{
-		ft_rev_rotate(head);
-		count_op++;
-	}
+		ft_rev_rotate(head, 'a');
 	if (head->first->value > head->first->next->value)
-	{
-		ft_swap(head);
-		count_op++;
-	}
-	return (count_op);
+		ft_swap(head, 'a');
 }

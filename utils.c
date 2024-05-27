@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:53 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/25 17:59:37 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/27 13:41:23 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	ft_average(t_head *head)
 	}
 	return (count / length);
 }
-
+/*
 void	max_on_top(t_head *head, int *count)
 {
 	int	index;
@@ -141,8 +141,8 @@ void	max_on_top(t_head *head, int *count)
 		}
 	}
 }
-
-void	min_on_top(t_head *head, int *count)
+*/
+void	min_on_top(t_head *head)
 {
 	int	index;
 	int	len;
@@ -152,17 +152,11 @@ void	min_on_top(t_head *head, int *count)
 	if (index <= (len / 2))
 	{
 		while (index-- > 0)
-		{
-			ft_rotate(head);
-			(*count)++;
-		}
+			ft_rotate(head, 'a');
 	}
 	else
 	{
 		while (index++ < len)
-		{
-			ft_rev_rotate(head);
-			(*count)++;
-		}
+			ft_rev_rotate(head, 'a');
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:25:19 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/26 15:42:21 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:35:51 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,88 +89,65 @@ int	cost_rev_rotate(int value, t_head *head)
 	return (cost);
 }
 
-int	algo_nul(t_head *head_a, t_head *head_b)
+void	algo_nul(t_head *head_a, t_head *head_b)
 {
 	int		cost;
-	int		count_op;
 	int		value;
 	int		i;
 	char	u_or_d[1];
 
-	count_op = 0;
 	value = list_length(head_a); // value ne sert pas a ca, juste pr sauver des variables
-	while ((double)list_length(head_a) > (double)value * 0.66)
+	while ((double)list_length(head_a) > (double)value * 0.6)
 	{
-		if ((double)head_a->first->value < (double)ft_average(head_a) * 0.73)
-			ft_push(head_a, head_b);
+		if ((double)head_a->first->value < (double)ft_average(head_a) * 1)
+			ft_push(head_a, head_b, 'b');
 		else
-			ft_rotate(head_a);
-		count_op++;
+			ft_rotate(head_a, 'a');
 	}
 	while (list_length(head_a) > 3)
 	{
 		if (head_a->first->value < ft_average(head_a))
-			ft_push(head_a, head_b);
+			ft_push(head_a, head_b, 'b');
 		else
-			ft_rotate(head_a);
-		count_op++;
+			ft_rotate(head_a, 'a');
 	}
-	count_op += ft_sort_3(head_a);
+	ft_sort_3(head_a);
 	while (head_b->first != NULL)
 	{
-		//print_stacks(head_a, head_b);
 		i = index_chosen_one(head_b, head_a, u_or_d);
-		//printf("chosen index in B: %d\n", i);
 		value = value_at_index(head_b, i);
 		cost = cost_rotate(value, head_a);
 		if (*u_or_d == 'd')
 			cost = cost_rev_rotate(value, head_a);
-		//printf("cost (rev?)rotating A: %d\n\n", cost);
 		if ('u' == *u_or_d)
 		{
 			while (i > 0 && cost > 0)
 			{
 				ft_double_rotate(head_b, head_a);
-				count_op++;
 				i--;
 				cost--;
 			}
 			while (i-- > 0)
-			{
-				ft_rotate(head_b);
-				count_op++;
-			}
+				ft_rotate(head_b, 'b');
 			while (cost-- > 0)
-			{
-				ft_rotate(head_a);
-				count_op++;
-			}
+				ft_rotate(head_a, 'a');
 		}
 		else
 		{
 			while (i < list_length(head_b) && cost > 0)
 			{
 				ft_double_rev_rotate(head_b, head_a);
-				count_op++;
 				i++;
 				cost--;
 			}
 			while (i++ < list_length(head_b))
-			{
-				ft_rev_rotate(head_b);
-				count_op++;
-			}
+				ft_rev_rotate(head_b, 'b');
 			while (cost-- > 0)
-			{
-				ft_rev_rotate(head_a);
-				count_op++;
-			}
+				ft_rev_rotate(head_a, 'a');
 		}
-		ft_push(head_b, head_a);
-		count_op++;
+		ft_push(head_b, head_a, 'a');
 	}
-	min_on_top(head_a, &count_op);
-	return (count_op);
+	min_on_top(head_a);
 }
 
 int	index_chosen_one(t_head *src, t_head *dest, char *u_or_d)

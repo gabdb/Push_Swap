@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/24 18:40:43 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:24:23 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,18 @@ int main(int ac, char **av)
 		return (printf("Error: invalid input !\n"), 0);
 	else if (check_doubles(count, list) == 0)
 		return (printf("Error: doublons !\n"), 0);
+/*
 	else
 		printf("valid input for push_swap !\n");
 	printf("#of integers: %d\n\n", count - 1);
+*/
 
 	t_head	*head_A = init_head();
 	t_head	*head_B = init_head();
 	create_stack_a(count, list, head_A);
-	int aantal_op = algo_nul(head_A, head_B);
+	algo_nul(head_A, head_B);
 	t_node	*current = head_A->first->next;
-	print_stack(head_A);
-	printf("\n aantal allowed operations: %d", aantal_op);
+	//print_stack(head_A);
 
 	free_all(head_A);
 	free_all(head_B);
