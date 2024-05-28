@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:54:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/27 13:44:45 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/28 15:14:20 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_push(t_head *src, t_head *dest, char q)
 void	ft_rotate(t_head *origin, char q)
 {
 	t_node	*current;
-	int		temp1; //bcp plus simple de changer les int plutôt que TOUS les pointers
+	int		temp1;
 	int		temp2;
 
 	if (!origin || !origin->first || origin->last == origin->first)

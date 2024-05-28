@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:25:19 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/27 14:35:51 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/28 15:22:32 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ void	algo_nul(t_head *head_a, t_head *head_b)
 	char	u_or_d[1];
 
 	value = list_length(head_a); // value ne sert pas a ca, juste pr sauver des variables
-	while ((double)list_length(head_a) > (double)value * 0.6)
+	while ((double)list_length(head_a) > (double)value * 0.4)
 	{
-		if ((double)head_a->first->value < (double)ft_average(head_a) * 1)
+		if ((double)head_a->first->value <= ft_average(head_a) * 0.8)
 			ft_push(head_a, head_b, 'b');
 		else
 			ft_rotate(head_a, 'a');
@@ -111,14 +111,17 @@ void	algo_nul(t_head *head_a, t_head *head_b)
 		else
 			ft_rotate(head_a, 'a');
 	}
-	ft_sort_3(head_a);
+	ft_sort_3(head_a, 'a');
 	while (head_b->first != NULL)
 	{
+		//print_stacks(head_a, head_b);
 		i = index_chosen_one(head_b, head_a, u_or_d);
+		//printf("chosen index in B: %d\n", i);
 		value = value_at_index(head_b, i);
 		cost = cost_rotate(value, head_a);
 		if (*u_or_d == 'd')
 			cost = cost_rev_rotate(value, head_a);
+		//printf("cost (rev?)rotating A: %d\n\n", cost);
 		if ('u' == *u_or_d)
 		{
 			while (i > 0 && cost > 0)
@@ -147,7 +150,7 @@ void	algo_nul(t_head *head_a, t_head *head_b)
 		}
 		ft_push(head_b, head_a, 'a');
 	}
-	min_on_top(head_a);
+	min_on_top(head_a, 'a');
 }
 
 int	index_chosen_one(t_head *src, t_head *dest, char *u_or_d)

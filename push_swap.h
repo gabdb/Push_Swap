@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/27 13:43:19 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/28 15:21:23 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int		my_strcmp(char *s1, char *s2);
 void	print_stacks(t_head *head_a, t_head *head_b);
 int		ft_small(int a, int b);
 int		value_at_index(t_head *head, int index);
-int		ft_average(t_head *head);
+double	ft_average(t_head *head);
 void	max_on_top(t_head *head, int *count);
-void	min_on_top(t_head *head);
+void	min_on_top(t_head *head, char q);
 
 // SPECIAL SPLIT (faudra enlever et rajouter libft)
 char	**ft_split(char const *s, char c);
@@ -84,7 +84,9 @@ char	**ft_split(char const *s, char c);
 int 	list_length(t_head *origin);
 int 	index_min(t_head *origin);
 int 	index_max(t_head *origin);
-void	ft_sort_3(t_head *head);
+int		algo_merde(t_head *head_a, t_head *head_b);
+int		ft_rev_sort_3(t_head *head);
+void	ft_sort_3(t_head *head, char q);
 
 // ALGO 2 fichier
 void	algo_nul(t_head *head_a, t_head *head_b);

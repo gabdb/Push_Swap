@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:53 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/27 13:41:23 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/28 15:22:22 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ long	my_atoi(char *str)
 	}
 	return (sign * res);
 }
-
+/*
 int	my_strcmp(char *s1, char *s2)
 {
 	int	i;
@@ -45,6 +45,7 @@ int	my_strcmp(char *s1, char *s2)
 		i++;
 	return (s1[i] - s2[i]);
 }
+*/
 
 void print_stacks(t_head *head_a, t_head *head_b) {
     t_node *current_a = (head_a->first) ? head_a->first : NULL;
@@ -100,10 +101,10 @@ int	value_at_index(t_head *head, int index)
 	return (current->value);
 }
 
-int	ft_average(t_head *head)
+double	ft_average(t_head *head)
 {
-	int		count;
-	int		length;
+	double	count;
+	double	length;
 	t_node	*current;
 
 	length = list_length(head);
@@ -142,7 +143,7 @@ void	max_on_top(t_head *head, int *count)
 	}
 }
 */
-void	min_on_top(t_head *head)
+void	min_on_top(t_head *head, char q)
 {
 	int	index;
 	int	len;
@@ -152,11 +153,11 @@ void	min_on_top(t_head *head)
 	if (index <= (len / 2))
 	{
 		while (index-- > 0)
-			ft_rotate(head, 'a');
+			ft_rotate(head, q);
 	}
 	else
 	{
 		while (index++ < len)
-			ft_rev_rotate(head, 'a');
+			ft_rev_rotate(head, q);
 	}
 }
