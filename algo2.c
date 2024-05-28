@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:25:19 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/28 15:22:32 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/28 19:29:59 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,20 +97,27 @@ void	algo_nul(t_head *head_a, t_head *head_b)
 	char	u_or_d[1];
 
 	value = list_length(head_a); // value ne sert pas a ca, juste pr sauver des variables
-	while ((double)list_length(head_a) > (double)value * 0.4)
+	int len = list_length(head_a);
+
+	double hack = 0.5;
+	while ((double)len > (double)value * 0.2)
 	{
-		if ((double)head_a->first->value <= ft_average(head_a) * 0.8)
+		if ((double)head_a->first->value <= ft_average(head_a) * hack)
 			ft_push(head_a, head_b, 'b');
 		else
 			ft_rotate(head_a, 'a');
+		len--;
+		hack += (1/value);
 	}
+
 	while (list_length(head_a) > 3)
 	{
-		if (head_a->first->value < ft_average(head_a))
+		if ((double)head_a->first->value <= ft_average(head_a))
 			ft_push(head_a, head_b, 'b');
 		else
 			ft_rotate(head_a, 'a');
 	}
+
 	ft_sort_3(head_a, 'a');
 	while (head_b->first != NULL)
 	{
