@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:53 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/28 15:22:22 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:16:48 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,6 @@ void print_stacks(t_head *head_a, t_head *head_b) {
         printf("\n");
     }
 	//printf("\n");
-}
-
-int	ft_small(int a, int b) //promo en utilisant rr / rrr
-{
-	if (a < b)
-		return (a);
-	else
-		return (b);
 }
 
 int	value_at_index(t_head *head, int index)

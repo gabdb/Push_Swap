@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/28 15:21:23 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 00:19:00 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,13 @@ typedef struct s_head
 	t_node	*last;
 }			t_head;
 
-
+typedef struct s_v
+{
+	t_node	*current;
+	int		best_index;
+	int		index;
+	int		cost;
+}			t_v;
 
 // VALIDITY PROTOTYPES
 char	**all_in_one(char **list);
@@ -70,8 +76,6 @@ void	ft_double_swap(t_head *head_a, t_head *head_b);
 // UTILS
 long	my_atoi(char *str);
 int		my_strcmp(char *s1, char *s2);
-void	print_stacks(t_head *head_a, t_head *head_b);
-int		ft_small(int a, int b);
 int		value_at_index(t_head *head, int index);
 double	ft_average(t_head *head);
 void	max_on_top(t_head *head, int *count);
@@ -84,12 +88,11 @@ char	**ft_split(char const *s, char c);
 int 	list_length(t_head *origin);
 int 	index_min(t_head *origin);
 int 	index_max(t_head *origin);
-int		algo_merde(t_head *head_a, t_head *head_b);
 int		ft_rev_sort_3(t_head *head);
 void	ft_sort_3(t_head *head, char q);
 
 // ALGO 2 fichier
-void	algo_nul(t_head *head_a, t_head *head_b);
+void	push_swap(t_head *head_a, t_head *head_b);
 int		index_bf(int value, t_head *head);
 int 	ft_min(t_head *head);
 int 	ft_max(t_head *head);
@@ -99,4 +102,9 @@ int		cost_rev_rotate(int value, t_head *head);
 int		index_chosen_one(t_head *src, t_head *dest, char *u_or_d);
 
 // UTILS 2
-char	lowest_half_list(t_head *head);
+char	lowest_half_list(t_head *head); //supp
+
+// HELP CHOSEN INDEX
+int		ft_small(int a, int b);
+int		check_rev_cost(t_head *src, t_head *dest, int value, int index);
+int		check_cost(t_head *src, t_head *dest, int value, int index);

@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:25:19 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/28 19:29:59 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 00:21:34 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	cost_rev_rotate(int value, t_head *head)
 	return (cost);
 }
 
-void	algo_nul(t_head *head_a, t_head *head_b)
+void	push_swap(t_head *head_a, t_head *head_b)
 {
 	int		cost;
 	int		value;
@@ -100,7 +100,7 @@ void	algo_nul(t_head *head_a, t_head *head_b)
 	int len = list_length(head_a);
 
 	double hack = 0.5;
-	while ((double)len > (double)value * 0.2)
+	while (len > 100)
 	{
 		if ((double)head_a->first->value <= ft_average(head_a) * hack)
 			ft_push(head_a, head_b, 'b');
@@ -162,40 +162,29 @@ void	algo_nul(t_head *head_a, t_head *head_b)
 
 int	index_chosen_one(t_head *src, t_head *dest, char *u_or_d)
 {
-	t_node	*current;
-	int		best_index;
-	int		value;
-	int		index;
-	int		cost;
+	t_v	v;
 
-	best_index = 0;
-	index = 0;
-	value = src->first->value;
-	cost = cost_rotate(value, dest);
+	v.best_index = 0;
+	v.index = 0;
+	v.cost = cost_rotate(src->first->value, dest);
 	*u_or_d = 'u';
-	if (cost_rev_rotate(value, dest) + list_length(src) - ft_small(cost_rev_rotate(value, dest), list_length(src)) < cost)
+	v.current = src->first;
+	while (v.current != src->first || v.index == 0)
 	{
-		cost = cost_rev_rotate(value, dest) + list_length(src) - ft_small(cost_rev_rotate(value, dest), list_length(src));
-		*u_or_d = 'd';
-	}
-	current = src->first->next;
-	while (current != src->first)
-	{
-		index++;
-		value = current->value;
-		if (cost_rotate(value, dest) + index - ft_small(cost_rotate(value, dest), index) < cost)
+		if (check_cost(src, dest, v.current->value, v.index) < v.cost)
 		{
-			cost = cost_rotate(value, dest) + index - ft_small(cost_rotate(value, dest), index);
-			best_index = index;
+			v.cost = check_cost(src, dest, v.current->value, v.index);
+			v.best_index = v.index;
 			*u_or_d = 'u';
 		}
-		if (cost_rev_rotate(value, dest) + (list_length(src) - index) - ft_small(cost_rev_rotate(value, dest), (list_length(src) - index)) < cost)
+		if (check_rev_cost(src, dest, v.current->value, v.index) < v.cost)
 		{
-			cost = cost_rev_rotate(value, dest) + (list_length(src) - index) - ft_small(cost_rev_rotate(value, dest), (list_length(src) - index));
-			best_index = index;
+			v.cost = check_rev_cost(src, dest, v.current->value, v.index);
+			v.best_index = v.index;
 			*u_or_d = 'd';
 		}
-		current = current->next;
+		v.current = v.current->next;
+		v.index++;
 	}
-	return (best_index);
+	return (v.best_index);
 }
