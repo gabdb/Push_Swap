@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 17:53:52 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:44:35 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,3 +110,8 @@ void	early_push(t_head *head_a, t_head *head_b);
 void	push_and_len(t_head *head_a, t_head *head_b, char q, int *len);
 void	handle_up(t_head *head_a, t_head *head_b, int i, int cost);
 void	handle_down(t_head *head_a, t_head *head_b, int i, int cost);
+
+//FIFTY HACK
+int		find_min_list(int *list, t_head *head);
+void	fill_list(int *list, t_head *head);
+int		is_smallest_50(int value, t_head *head);
