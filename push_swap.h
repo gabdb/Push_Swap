@@ -6,16 +6,14 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 16:09:32 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:53:52 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-#include <stdbool.h> //supprimer
-
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
 
 typedef struct s_getal
 {
@@ -64,45 +62,43 @@ void	ft_swap(t_head *origin, char q);
 void	ft_push(t_head *src, t_head *dest, char q);
 void	ft_rotate(t_head *origin, char q);
 void	ft_rev_rotate(t_head *origin, char q);
-void	ft_double_rotate(t_head *head_a, t_head *head_b);
-void	ft_double_rev_rotate(t_head *head_a, t_head *head_b);
-
 
 // HELP OPERATIONS
 void	handle_empty_case(t_head *dest, t_node *save);
 void	handle_not_empty(t_head *dest, t_node *save);
 void	ft_double_swap(t_head *head_a, t_head *head_b);
+void	ft_double_rotate(t_head *head_a, t_head *head_b);
+void	ft_double_rev_rotate(t_head *head_a, t_head *head_b);
 
 // UTILS
 long	my_atoi(char *str);
-int		my_strcmp(char *s1, char *s2);
 int		value_at_index(t_head *head, int index);
 double	ft_average(t_head *head);
-void	max_on_top(t_head *head, int *count);
 void	min_on_top(t_head *head, char q);
+int		ft_min(t_head *head);
 
 // SPECIAL SPLIT (faudra enlever et rajouter libft)
 char	**ft_split(char const *s, char c);
 
 //ALGO MITEUX (plûtot un test, probablement à supprimer)
-int 	list_length(t_head *origin);
-int 	index_min(t_head *origin);
-int 	index_max(t_head *origin);
+int		list_length(t_head *origin);
+int		index_min(t_head *origin);
+int		index_max(t_head *origin);
 int		ft_rev_sort_3(t_head *head);
 void	ft_sort_3(t_head *head, char q);
 
 // ALGO 2 fichier
 void	push_swap(t_head *head_a, t_head *head_b);
 int		index_bf(int value, t_head *head);
-int 	ft_min(t_head *head);
-int 	ft_max(t_head *head);
+int		ft_min(t_head *head);
 int		ft_rev_sort_3(t_head *head);
 int		cost_rotate(int value, t_head *head);
 int		cost_rev_rotate(int value, t_head *head);
 int		index_chosen_one(t_head *src, t_head *dest, char *u_or_d);
 
 // UTILS 2
-char	lowest_half_list(t_head *head); //supp
+int		ft_min(t_head *head);
+int		ft_max(t_head *head);
 
 // HELP CHOSEN INDEX
 int		ft_small(int a, int b);

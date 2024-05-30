@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:54:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/28 15:14:20 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:45:24 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,19 @@ void	ft_push(t_head *src, t_head *dest, char q)
 
 	if (!src || !src->first || !dest)
 		return ;
-	save = src->first; // sauver address noeud qui va bouger
-	src->first = src->first->next; // tête pointe mnt vers 2e noeud (futur 1e)
-	if (src->first == save && src->last == save) // enft ca devrait doffice etre '&&'
+	save = src->first;
+	src->first = src->first->next;
+	if (src->first == save && src->last == save)
 	{
-		src->first = NULL; // ici cest si le stack est nouvellement vide
+		src->first = NULL;
 		src->last = NULL;
 	}
 	else
 	{
-		src->first->previous = src->last; //boucler la boucle: nouveau 1e pointe vers dernier
+		src->first->previous = src->last;
 		src->last->next = src->first;
 	}
-	if (dest->first == NULL) //sous-traité pour gagner de l'espace
+	if (dest->first == NULL)
 		handle_empty_case(dest, save);
 	else
 		handle_not_empty(dest, save);
@@ -100,18 +100,4 @@ void	ft_rev_rotate(t_head *origin, char q)
 		write(1, "rra\n", 4);
 	else if ('b' == q)
 		write(1, "rrb\n", 4);
-}
-
-void	ft_double_rotate(t_head *head_a, t_head *head_b)
-{
-	ft_rotate(head_a, '\0');
-	ft_rotate(head_b, '\0');
-	write(1, "rr\n", 3);
-}
-
-void	ft_double_rev_rotate(t_head *head_a, t_head *head_b)
-{
-	ft_rev_rotate(head_a, '\0');
-	ft_rev_rotate(head_b, '\0');
-	write(1, "rrr\n", 4);
 }

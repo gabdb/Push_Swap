@@ -6,13 +6,13 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:56:30 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/29 14:52:32 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:33:18 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int list_length(t_head *origin)
+int	list_length(t_head *origin)
 {
 	t_node	*current;
 	int		count;
@@ -33,7 +33,7 @@ int list_length(t_head *origin)
 	return (count);
 }
 
-int index_max(t_head *origin)
+int	index_max(t_head *origin)
 {
 	t_node	*current;
 	int		index;
@@ -61,7 +61,7 @@ int index_max(t_head *origin)
 	return (save_index);
 }
 
-int index_min(t_head *origin)
+int	index_min(t_head *origin)
 {
 	t_node	*current;
 	int		index;

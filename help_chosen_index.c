@@ -6,13 +6,13 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:50:43 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/29 16:00:29 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:31:15 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_small(int a, int b) //promo en utilisant rr / rrr
+int	ft_small(int a, int b)
 {
 	if (a < b)
 		return (a);

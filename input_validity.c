@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:34:28 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/26 16:13:17 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:37:52 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	valid_input(int count, char **list)
 	return (1);
 }
 
-int check_doubles(int count, char **list)
+int	check_doubles(int count, char **list)
 {
 	int	i;
 	int	j;

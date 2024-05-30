@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 12:41:07 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 16:20:27 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:37:22 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,16 @@ void	early_push(t_head *head_a, t_head *head_b)
 
 	total_len = list_length(head_a);
 	len = total_len;
-	hack = 0.77;
-	while (len > 200)
+	while (len > 150)
 	{
-		if ((double)head_a->first->value <= ft_average(head_a) * hack)
+		if ((double)head_a->first->value <= ft_average(head_a) * 0.85)
 			push_and_len(head_a, head_b, 'b', &len);
 		else
 			ft_rotate(head_a, 'a');
-		if (hack < 1)
-			hack += (0.33/total_len);
 	}
 	while (list_length(head_a) > 3)
 	{
-		if ((double)head_a->first->value <= ft_average(head_a))
+		if ((double)head_a->first->value < ft_average(head_a))
 			ft_push(head_a, head_b, 'b');
 		else
 			ft_rotate(head_a, 'a');

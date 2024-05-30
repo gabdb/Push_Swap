@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:25:19 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 16:10:08 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:36:02 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	index_bf(int value, t_head *head)
 {
-	int 	index;
+	int		index;
 	t_node	*current;
 
 	current = head->first;
@@ -27,42 +27,6 @@ int	index_bf(int value, t_head *head)
 		current = current->next;
 	}
 	return (index);
-}
-
-int ft_min(t_head *head)
-{
-	t_node	*current;
-	int		min;
-
-	current = head->first;
-	min = current->value;
-	while (current != head->last)
-	{
-		if (current->value < min)
-			min = current->value;
-		current = current->next;
-	}
-	if (current->value < min)
-		min = current->value;
-	return (min);
-}
-
-int ft_max(t_head *head)
-{
-	t_node	*current;
-	int		max;
-
-	current = head->first;
-	max = current->value;
-	while (current != head->last)
-	{
-		if (current->value > max)
-			max = current->value;
-		current = current->next;
-	}
-	if (current->value > max)
-		max = current->value;
-	return (max);
 }
 
 int	cost_rotate(int value, t_head *head)
