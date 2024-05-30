@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:25:19 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 00:21:34 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:10:08 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,65 +96,18 @@ void	push_swap(t_head *head_a, t_head *head_b)
 	int		i;
 	char	u_or_d[1];
 
-	value = list_length(head_a); // value ne sert pas a ca, juste pr sauver des variables
-	int len = list_length(head_a);
-
-	double hack = 0.5;
-	while (len > 100)
-	{
-		if ((double)head_a->first->value <= ft_average(head_a) * hack)
-			ft_push(head_a, head_b, 'b');
-		else
-			ft_rotate(head_a, 'a');
-		len--;
-		hack += (1/value);
-	}
-
-	while (list_length(head_a) > 3)
-	{
-		if ((double)head_a->first->value <= ft_average(head_a))
-			ft_push(head_a, head_b, 'b');
-		else
-			ft_rotate(head_a, 'a');
-	}
-
-	ft_sort_3(head_a, 'a');
+	early_push(head_a, head_b);
 	while (head_b->first != NULL)
 	{
-		//print_stacks(head_a, head_b);
 		i = index_chosen_one(head_b, head_a, u_or_d);
-		//printf("chosen index in B: %d\n", i);
 		value = value_at_index(head_b, i);
 		cost = cost_rotate(value, head_a);
 		if (*u_or_d == 'd')
 			cost = cost_rev_rotate(value, head_a);
-		//printf("cost (rev?)rotating A: %d\n\n", cost);
 		if ('u' == *u_or_d)
-		{
-			while (i > 0 && cost > 0)
-			{
-				ft_double_rotate(head_b, head_a);
-				i--;
-				cost--;
-			}
-			while (i-- > 0)
-				ft_rotate(head_b, 'b');
-			while (cost-- > 0)
-				ft_rotate(head_a, 'a');
-		}
+			handle_up(head_a, head_b, i, cost);
 		else
-		{
-			while (i < list_length(head_b) && cost > 0)
-			{
-				ft_double_rev_rotate(head_b, head_a);
-				i++;
-				cost--;
-			}
-			while (i++ < list_length(head_b))
-				ft_rev_rotate(head_b, 'b');
-			while (cost-- > 0)
-				ft_rev_rotate(head_a, 'a');
-		}
+			handle_down(head_a, head_b, i, cost);
 		ft_push(head_b, head_a, 'a');
 	}
 	min_on_top(head_a, 'a');

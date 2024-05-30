@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 00:19:00 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:09:32 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,3 +108,9 @@ char	lowest_half_list(t_head *head); //supp
 int		ft_small(int a, int b);
 int		check_rev_cost(t_head *src, t_head *dest, int value, int index);
 int		check_cost(t_head *src, t_head *dest, int value, int index);
+
+//HELP ALGO
+void	early_push(t_head *head_a, t_head *head_b);
+void	push_and_len(t_head *head_a, t_head *head_b, char q, int *len);
+void	handle_up(t_head *head_a, t_head *head_b, int i, int cost);
+void	handle_down(t_head *head_a, t_head *head_b, int i, int cost);

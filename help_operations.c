@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 01:05:20 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/28 15:23:52 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:36:26 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,3 @@ void	handle_not_empty(t_head *dest, t_node *save)
 	dest->last->next = save;
 	dest->first = save;
 }
-/*
-void	ft_double_swap(t_head *head_a, t_head *head_b)
-{
-	ft_swap(head_a, 'a');
-	ft_swap(head_b, 'b');
-	write(1, "double swap !", 13);
-}
-*/
