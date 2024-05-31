@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 18:10:43 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 19:22:12 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:06:53 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,19 @@ void	fill_list(int *list, t_head *head)
 
 int	is_smallest_50(int value, t_head *head)
 {
-	t_node	*current;
 	int		list[10000];
 	int		array[100];
 	int		i;
 
 	fill_list(list, head);
 	i = 0;
-	while (i < 100)
+	while (i < 80)
 	{
 		array[i] = find_min_list(list, head);
 		i++;
 	}
 	i = 0;
-	while (i < 100)
+	while (i < 80)
 	{
 		if (value == array[i])
 			return (1);

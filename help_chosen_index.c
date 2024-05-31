@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:50:43 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 17:31:15 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:07:23 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	check_cost(t_head *src, t_head *dest, int value, int index)
 {
 	int	result;
 
+	(void)src;
 	result = cost_rotate(value, dest) + index
 		- ft_small(cost_rotate(value, dest), index);
 	return (result);

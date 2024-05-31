@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 12:41:07 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 18:47:01 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:47:36 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	early_push(t_head *head_a, t_head *head_b)
 
 	total_len = list_length(head_a);
 	len = total_len;
-	while (len > 100)
+	while (len > 200)
 	{
 		if (is_smallest_50(head_a->first->value, head_a) == 1)
 			push_and_len(head_a, head_b, 'b', &len);
