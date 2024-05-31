@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/31 13:34:10 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:42:46 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ int	main(int ac, char **av)
 		return (0);
 	if (ac == 2)
 		av = all_in_one(av);
-	if (!av)
-		return (write(1,"Error\n", 6), 0);
 	ac = words_in_split(av);
 	if (valid_input(ac, av) == 0)
 		return (write(1,"Error\n", 6), 0);

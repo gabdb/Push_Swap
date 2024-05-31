@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:34:28 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 17:37:52 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:41:58 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**all_in_one(char **list)
 	}
 	new_list = ft_split(list[1], ' ');
 	if (!new_list)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	return (new_list);
 }
 
