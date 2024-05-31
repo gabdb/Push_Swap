@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 18:44:35 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:14:27 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int		ft_min(t_head *head);
 
 // SPECIAL SPLIT (faudra enlever et rajouter libft)
 char	**ft_split(char const *s, char c);
+char	**free_split(char **dptr, size_t x);
 
 //ALGO MITEUX (plûtot un test, probablement à supprimer)
 int		list_length(t_head *origin);

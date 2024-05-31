@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 17:48:59 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 17:49:13 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:14:07 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static size_t	ft_length_word(char const *str, char c)
 	return (i);
 }
 
-static char	**free_split(char **dptr, size_t	x)
+char	**free_split(char **dptr, size_t x)
 {
 	size_t	i;
 
