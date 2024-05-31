@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/31 13:14:27 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:52:37 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ char	**all_in_one(char **list);
 int		valid_input(int count, char **list);
 int		check_doubles(int count, char **list);
 int		words_in_split(char **list);
+void	error_and_exit(void);
 
 // NODES PROTOYPES
-void	free_all(t_head *origin);
+void	free_stack(t_head *origin);
 t_node	*new_node(int nbr, t_node *vorige, t_node *volgende);
 void	create_stack_a(int count, char **list, t_head *origin);
 t_head	*init_head(void);
@@ -79,7 +80,7 @@ int		ft_min(t_head *head);
 
 // SPECIAL SPLIT (faudra enlever et rajouter libft)
 char	**ft_split(char const *s, char c);
-char	**free_split(char **dptr, size_t x);
+void	free_split(char **dptr, size_t x);
 
 //ALGO MITEUX (plûtot un test, probablement à supprimer)
 int		list_length(t_head *origin);
@@ -116,3 +117,7 @@ void	handle_down(t_head *head_a, t_head *head_b, int i, int cost);
 int		find_min_list(int *list, t_head *head);
 void	fill_list(int *list, t_head *head);
 int		is_smallest_50(int value, t_head *head);
+
+//STRJOIN
+char	*ft_strjoin(char const *s1, char const *s2);
+int	ft_strlen(const char *src);

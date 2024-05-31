@@ -17,6 +17,7 @@ SRC = 	algo.c\
 		split.c\
 		utils.c\
 		utils2.c\
+		ft_strjoin.c\
 
 OBJ = $(SRC:.c=.o)
 

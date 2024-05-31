@@ -6,11 +6,17 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:34:28 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/31 13:41:58 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:54:48 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	error_and_exit(void)
+{
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
 
 char	**all_in_one(char **list)
 {
@@ -25,16 +31,18 @@ char	**all_in_one(char **list)
 		else if (list[1][i] == '-')
 		{
 			if (!list[1][i + 1])
-				return (NULL);
+				error_and_exit();
 			else if (list[1][i + 1] >= '0' && list[1][i + 1] <= '9')
 				i++;
 			else
-				return (NULL);
+				error_and_exit();
 		}
 		else
-			return (NULL);
+			error_and_exit();
 	}
+	list[1] = ft_strjoin("push_swap ", list[1]);
 	new_list = ft_split(list[1], ' ');
+	free(list[1]);
 	if (!new_list)
 		exit(EXIT_FAILURE);
 	return (new_list);

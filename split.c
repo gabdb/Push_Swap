@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 17:48:59 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/31 13:14:07 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/31 16:08:07 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static size_t	ft_length_word(char const *str, char c)
 	return (i);
 }
 
-char	**free_split(char **dptr, size_t x)
+void	free_split(char **dptr, size_t x)
 {
 	size_t	i;
 
@@ -52,7 +52,6 @@ char	**free_split(char **dptr, size_t x)
 		i++;
 	}
 	free(dptr);
-	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -73,7 +72,7 @@ char	**ft_split(char const *s, char c)
 			getal.i++;
 		getal.final[getal.x] = malloc(ft_length_word(s + getal.i, c) + 1);
 		if (!getal.final[getal.x])
-			return (free_split(getal.final, getal.x));
+			return (free_split(getal.final, getal.x), NULL);
 		getal.j = 0;
 		while (s[getal.i] != c && s[getal.i])
 			getal.final[getal.x][getal.j++] = s[getal.i++];

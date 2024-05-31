@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:58 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 17:42:13 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:30:27 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	create_stack_a(int count, char **list, t_head *origin)
 		current = new_node(nbr, temp_prev, NULL);
 		if (!current)
 		{
-			free_all(origin);
+			free_stack(origin);
 			return ;
 		}
 		if (i == 1)
@@ -66,7 +66,7 @@ void	create_stack_a(int count, char **list, t_head *origin)
 	origin->last = current;
 }
 
-void	free_all(t_head *origin)
+void	free_stack(t_head *origin)
 {
 	t_node	*current;
 	t_node	*volgende;
