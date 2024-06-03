@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/06/03 17:05:14 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:06:51 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_split_exit(int ac, char **av)
 	exit(EXIT_FAILURE);
 }
 
-int	is_sorted(t_head *head, int ac, char **av)
+int	is_sorted(t_head *head)
 {
 	t_node	*current;
 
@@ -63,7 +63,7 @@ int	main(int ac, char **av)
 	create_stack_a(words, av, head_a);
 	if (ac == 2)
 		free_split(av, (size_t)words + 1);
-	if (is_sorted(head_a, words, av))
+	if (is_sorted(head_a))
 		free_stacks_exit(head_a, head_b);
 	if (list_length(head_a) <= 3)
 		handle_short_list(head_a);
