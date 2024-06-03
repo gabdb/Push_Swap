@@ -6,17 +6,11 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/06/03 13:34:31 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:46:53 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_split_if_needed(int words, int ac, char **av)
-{
-	if (ac == 2)
-		free_split(av, (size_t)words + 1);
-}
 
 void	free_split_exit(int ac, char **av)
 {
@@ -69,22 +63,14 @@ int	main(int ac, char **av)
 	head_a = init_head();
 	head_b = init_head();
 	create_stack_a(words, av, head_a);
-	if (is_sorted(head_a, words, av))
-	{
-		free_split_if_needed(words, ac, av);
-		free_stacks_exit(head_a, head_b);
-	}
-	if (list_length(head_a) <= 3)
-	{
-		handle_short_list(head_a);
-		free_split_if_needed(words, ac, av);
-		free_stacks_exit(head_a, head_b);
-	}
-	push_swap(head_a, head_b);
 	if (ac == 2)
 		free_split(av, (size_t)words + 1);
-	free_stack(head_a);
-	free_stack(head_b);
+	if (is_sorted(head_a, words, av))
+		free_stacks_exit(head_a, head_b);
+	if (list_length(head_a) <= 3)
+		handle_short_list(head_a);
+	else
+		push_swap(head_a, head_b);
+	free_stacks_exit(head_a, head_b);
 	return (0);
 }
-// jdois utiliser join pr rajouter av[0] (a.out) dans nouveau av, sinon bug
