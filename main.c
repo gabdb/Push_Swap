@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:29:17 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/06/03 13:46:53 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:05:14 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	is_sorted(t_head *head, int ac, char **av)
 			return (0);
 		current = current->next;
 	}
-	if (ac == 2)
-		free_split(av, (size_t)ac + 1);
 	return (1);
 }
 

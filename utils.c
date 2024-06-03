@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:51:53 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 17:53:18 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:04:46 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ long	my_atoi(char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		res = res * 10 + *str++ - '0';
-		if (res < -2147483648)
+		if (res * sign < -2147483648)
 			return (-2147483649);
-		if (res > 2147483647)
+		if (res * sign > 2147483647)
 			return (2147483649);
 	}
 	return (sign * res);
