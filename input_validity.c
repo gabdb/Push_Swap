@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:34:28 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/31 17:54:48 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:22:55 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ char	**all_in_one(char **list)
 			i++;
 		else if (list[1][i] == '-')
 		{
-			if (!list[1][i + 1])
-				error_and_exit();
-			else if (list[1][i + 1] >= '0' && list[1][i + 1] <= '9')
+			if (list[1][i + 1] >= '0' && list[1][i + 1] <= '9')
 				i++;
 			else
 				error_and_exit();

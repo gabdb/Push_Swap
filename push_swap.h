@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:48:24 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/31 17:52:37 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:31:38 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int		index_chosen_one(t_head *src, t_head *dest, char *u_or_d);
 // UTILS 2
 int		ft_min(t_head *head);
 int		ft_max(t_head *head);
+void	free_stacks_exit(t_head *head_a, t_head *head_b);
 
 // HELP CHOSEN INDEX
 int		ft_small(int a, int b);
@@ -120,4 +121,4 @@ int		is_smallest_50(int value, t_head *head);
 
 //STRJOIN
 char	*ft_strjoin(char const *s1, char const *s2);
-int	ft_strlen(const char *src);
+int		ft_strlen(const char *src);

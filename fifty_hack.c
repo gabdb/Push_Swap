@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 18:10:43 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/31 14:06:53 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:16:18 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	find_min_list(int *list, t_head *head)
 
 void	fill_list(int *list, t_head *head)
 {
-	int	i;
+	int		i;
 	t_node	*current;
 
 	*list = head->first->value;

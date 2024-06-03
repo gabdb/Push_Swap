@@ -6,7 +6,7 @@
 /*   By: gnyssens <gnyssens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 23:41:03 by gnyssens          #+#    #+#             */
-/*   Updated: 2024/05/30 17:53:29 by gnyssens         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:31:20 by gnyssens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,11 @@ int	ft_min(t_head *head)
 		min = current->value;
 	return (min);
 }
+
+void	free_stacks_exit(t_head *head_a, t_head *head_b)
+{
+	free_stack(head_a);
+	free_stack(head_b);
+	exit(EXIT_SUCCESS);
+}
+
