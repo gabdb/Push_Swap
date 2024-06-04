@@ -10,10 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <string.h>
 
 typedef struct s_getal
 {
@@ -122,3 +125,5 @@ int		is_smallest_50(int value, t_head *head);
 //STRJOIN
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strlen(const char *src);
+
+#endif
